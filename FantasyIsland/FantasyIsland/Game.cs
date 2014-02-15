@@ -6,6 +6,7 @@
     {
         public static void Main()
         {
+            Console.WriteLine("Veselin finally set up his GitHub!");
         }
     }
 }
