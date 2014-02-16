@@ -9,6 +9,7 @@
             Console.WriteLine("Veselin finally set up his GitHub!");
             Console.WriteLine("Well done!");
             Console.WriteLine("Georgi is here too!");
+            Console.WriteLine("Hello Georgi and Veselin from Daniel");
         }
     }
 }
