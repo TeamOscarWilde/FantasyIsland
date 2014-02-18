@@ -13,8 +13,8 @@ namespace FantasyIsland
         private static PlayerStats elf = new PlayerStats(30, 35, 40, 75, 35);
         private static PlayerStats human = new PlayerStats(45, 35, 30, 75, 30);
         private static PlayerStats dwarf = new PlayerStats(25, 30, 50, 60, 50);
-        private static PlayerStats humanEatingPlant = new PlayerStats(10, 5, 0, 5, 5);
-        private static PlayerStats witch = new PlayerStats(5, 50, 0, 5, 25);
+        private static PlayerStats humanEatingPlant = new PlayerStats(20, 5, 0, 5, 5);
+        private static PlayerStats witch = new PlayerStats(25, 50, 0, 5, 25);
         private static PlayerStats zombie = new PlayerStats(30, 5, 5, 20, 5);
         private static PlayerStats flyingDemon = new PlayerStats(15, 15, 10, 25, 10);
         private static PlayerStats dragon = new PlayerStats(30, 15, 40, 60, 15);
@@ -76,6 +76,11 @@ namespace FantasyIsland
         {
             get { return this.agility; }
             private set { this.agility = value; }
+        }
+
+        public decimal CalculateAgilityPercentage()
+        {
+            return (100 - this.agility) / 100m;
         }
     }
 }

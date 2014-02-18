@@ -15,6 +15,7 @@ namespace FantasyIsland
         private static Weapon hammer = new Weapon(45, 0, 10);
         private static Weapon sword = new Weapon(30, 12, 30);
         private static Weapon dagger = new Weapon(25, 15, 25);
+        private static Weapon none = new Weapon(0, 0, 0);
 
         public Weapon(int attack, int accuracy, int defence)
         {
@@ -55,6 +56,11 @@ namespace FantasyIsland
         public static Weapon Dagger
         {
             get { return dagger; }
+        }
+
+        public static Weapon None
+        {
+            get { return none; }
         }
     }
 }

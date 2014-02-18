@@ -27,8 +27,10 @@ namespace FantasyIsland
 
         public PlayerStats Stats
         {
-            get { return this.playerStats; }
-            private set { this.playerStats = value; }
+            get { return this.totalStats; }
+            private set { this.totalStats = value; }
         }
+
+
     }
 }

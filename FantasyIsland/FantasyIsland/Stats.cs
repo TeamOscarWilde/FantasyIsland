@@ -8,9 +8,9 @@ namespace FantasyIsland
 {
     public class Stats
     {
-        protected int attackPower;
-        protected int accuracy;
-        protected int defence;
+        private int attackPower;
+        private int accuracy;
+        private int defence;
 
         public Stats(int attack, int accuracy, int defence)
         {
@@ -36,5 +36,11 @@ namespace FantasyIsland
             get { return this.defence; }
             set { this.defence = value; }
         }
+
+        public decimal CalculateDefencePercentage()
+        {
+            return (100 - this.defence) / 100m;
+        }
+
     }
 }

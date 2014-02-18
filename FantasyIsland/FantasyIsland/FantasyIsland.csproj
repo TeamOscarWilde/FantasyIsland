@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,13 +43,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Armor.cs" />
+    <Compile Include="DarkForestLevel.cs" />
+    <Compile Include="Difficulty.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Hero.cs" />
+    <Compile Include="IBattle.cs" />
+    <Compile Include="IIntro.cs" />
+    <Compile Include="Level.cs" />
     <Compile Include="Magic.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerStats.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reaction.cs" />
     <Compile Include="Stats.cs" />
     <Compile Include="SuperPower.cs" />
     <Compile Include="Weapon.cs" />
