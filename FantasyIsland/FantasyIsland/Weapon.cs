@@ -24,7 +24,7 @@ namespace FantasyIsland
         public Stats WeaponStats
         {
             get { return this.weaponStats; }
-            private set { }
+            private set { this.weaponStats = value; }
         }
 
         public static Weapon Bow

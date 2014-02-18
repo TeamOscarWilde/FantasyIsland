@@ -8,12 +8,12 @@ namespace FantasyIsland
 {
     public class Armor
     {
-        private int weight;
-        private int strength;
         private static Armor none = new Armor(0, 0);
         private static Armor light = new Armor(15, 20);
         private static Armor medium = new Armor(30, 35);
         private static Armor heavy = new Armor(50, 50);
+        private int weight;
+        private int strength;
 
         public Armor(int weight, int strength)
         {
@@ -43,13 +43,13 @@ namespace FantasyIsland
         public int Weight
         {
             get { return this.weight; }
-            private set { }
+            set { this.weight = value; }
         }
 
         public int Strength
         {
             get { return this.strength; }
-            private set { }
+            set { this.strength = value; }
         }
     }
 }

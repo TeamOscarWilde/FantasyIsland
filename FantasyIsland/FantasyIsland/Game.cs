@@ -21,7 +21,7 @@
                         return timer.ElapsedMilliseconds;
                     }
                 }
-                if (timer.ElapsedMilliseconds > 200000)
+                if (timer.ElapsedMilliseconds > 3000)
                 {
                     timer.Stop();
                     return timer.ElapsedMilliseconds;
@@ -31,7 +31,7 @@
         static void Battle(Hero hero)
         {
             Random rand = new Random();
-            int rounds = rand.Next(5, 11);
+            int rounds = rand.Next(6, 11);
             Stopwatch timer = new Stopwatch();
             Thread.Sleep(1000);
             long reaction = 0;
@@ -47,18 +47,18 @@
                 char keyToPress = (char)rand.Next(97, 123);
                 Console.WriteLine("You are attacked by a plant!!! \nPRESS \"{0}\" TO COUNTER-ATTACK!!!", keyToPress);
                 reaction = MeasureReaction(keyToPress);
-                if (reaction < 800)
+                if (reaction < 1200)
                 {
                     Console.WriteLine("Well done! Attack avoided, plant killed! No health lost!");
                     Thread.Sleep(rand.Next(1500, 3500));
                 }
-                else if (reaction >= 800 && reaction < 1200)
+                else if (reaction >= 1200 && reaction < 1600)
                 {
                     Console.WriteLine("Small bite received! Little health lost!");
                     hero.Stats.Stamina -= 10;
                     Thread.Sleep(rand.Next(1500, 3500));
                 }
-                else if (reaction >= 1200 && reaction < 1600)
+                else if (reaction >= 1600 && reaction < 2000)
                 {
                     Console.WriteLine("Big bite received! A lot of health lost!");
                     hero.Stats.Stamina -= 20;
@@ -70,8 +70,11 @@
                     break;
                 }
             }
-            Console.Clear();
-            Console.WriteLine("You passed through the plant-eating forest!");
+            if (hero.Stats.Stamina > 0)
+            {
+                Console.Clear();
+                Console.WriteLine("You passed the human-eating plants forest!");
+            }
 
         }
         static void ShowHealth(Hero hero)

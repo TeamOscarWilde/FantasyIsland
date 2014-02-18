@@ -75,7 +75,7 @@ namespace FantasyIsland
         public int Agility
         {
             get { return this.agility; }
-            private set { }
+            private set { this.agility = value; }
         }
     }
 }

@@ -22,19 +22,19 @@ namespace FantasyIsland
         public int AttackPower
         {
             get { return this.attackPower; }
-            protected set { }
+            set { this.attackPower = value; }
         }
 
         public int Accuracy
         {
             get { return this.accuracy; }
-            protected set { }
+            set { this.accuracy = value; }
         }
 
         public int Defence
         {
             get { return this.defence; }
-            protected set { }
+            set { this.defence = value; }
         }
     }
 }
