@@ -1,4 +1,8 @@
-﻿namespace FantasyIsland
+﻿
+/* The stamina of the player shows his current health condition. 
+ * The agility shows how quick the player is to avoid attacks. */
+
+namespace FantasyIsland
 {
     using System;
 

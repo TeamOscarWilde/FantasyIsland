@@ -20,12 +20,12 @@
         static Weapon()
         {
             none = new Weapon(0, 0, 0);
-            bow = new Weapon(30, 0, 40);
-            flamethrower = new Weapon(35, 0, 30);
-            axe = new Weapon(35, 6, 25);
-            hammer = new Weapon(45, 0, 10);
-            sword = new Weapon(30, 12, 30);
-            dagger = new Weapon(25, 15, 25);
+            bow = new Weapon(30, 40, 0);
+            flamethrower = new Weapon(35, 30, 0);
+            axe = new Weapon(35, 25, 6);
+            hammer = new Weapon(45, 10, 0);
+            sword = new Weapon(30, 30, 15);
+            dagger = new Weapon(25, 35, 12);
         }
         #endregion
 

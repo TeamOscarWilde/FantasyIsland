@@ -29,6 +29,9 @@ namespace FantasyIsland
         private readonly decimal averageReaction;
         private readonly decimal slowReaction;
 
+        //The value of the stamina that the player loses in case he is bitten
+        private int bitePower;
+        //The agility percentage that affects the time to react to each attack
         private decimal agilityEffect;
         private static Enemy enemy;
         #endregion
@@ -84,7 +87,7 @@ namespace FantasyIsland
             int rounds = rand.Next(MIN_ROUNDS, MAX_ROUNDS);
             Thread.Sleep(1000);
             long reaction = 0;
-            int bitePower = (int)(enemy.PlayerStats.AttackPower * hero.PlayerStats.CalculateDefencePercentage());
+            bitePower = (int)(enemy.PlayerStats.AttackPower * hero.PlayerStats.CalculateDefencePercentage());
             this.agilityEffect = hero.PlayerStats.CalculateAgilityPercentage();
             for (int round = 0; round < rounds; round++)
             {
@@ -95,6 +98,8 @@ namespace FantasyIsland
                     Console.WriteLine("Too much damage taken! You are dead!");
                     break;
                 }
+
+                //Use the random generator to pick a character that has to be pressed to avoid the attack
                 char keyToPress = (char)rand.Next(ALPHABET_START_INDEX, ALPHABET_END_INDEX);
                 Console.WriteLine("You are attacked by a plant!!! \nPRESS \"{0}\" TO COUNTER-ATTACK!!!", keyToPress);
                 reaction = Reaction.MeasureReaction(keyToPress);

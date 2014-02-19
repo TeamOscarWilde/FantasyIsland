@@ -1,4 +1,8 @@
-﻿namespace FantasyIsland
+﻿
+/* The player has player stats that reffer only to his type of hero 
+ * and total stats that are calculated from his personal stats and the stats of his weapons, armor, etc. */
+
+namespace FantasyIsland
 {
     public class Player
     {
@@ -30,7 +34,8 @@
         {
             get
             {
-                return new PlayerStats(this.playerStats.AttackPower, this.playerStats.Accuracy, this.playerStats.Defence, this.playerStats.Stamina, this.playerStats.Agility);
+                return new PlayerStats(this.playerStats.AttackPower, this.playerStats.Accuracy, 
+                    this.playerStats.Defence, this.playerStats.Stamina, this.playerStats.Agility);
             }
             private set
             {
@@ -54,7 +59,8 @@
         {
             get
             {
-                return new Weapon(this.weapon.WeaponStats.AttackPower, this.weapon.WeaponStats.Accuracy, this.weapon.WeaponStats.Defence);
+                return new Weapon(this.weapon.WeaponStats.AttackPower, this.weapon.WeaponStats.Accuracy, 
+                    this.weapon.WeaponStats.Defence);
             }
             private set
             {
@@ -66,7 +72,8 @@
         {
             get
             {
-                return new PlayerStats(this.totalStats.AttackPower, this.totalStats.Accuracy, this.totalStats.Defence, this.totalStats.Stamina, this.totalStats.Agility);
+                return new PlayerStats(this.totalStats.AttackPower, this.totalStats.Accuracy, 
+                    this.totalStats.Defence, this.totalStats.Stamina, this.totalStats.Agility);
             }
             private set
             {

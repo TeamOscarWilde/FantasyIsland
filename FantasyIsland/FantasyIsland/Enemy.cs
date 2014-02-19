@@ -1,8 +1,10 @@
-﻿namespace FantasyIsland
+﻿// For each level the player will have different enemy.
+namespace FantasyIsland
 {
     public class Enemy : Player
     {
         #region Constructors
+        //TODO Make use of the Magics
         public Enemy(PlayerStats stats, Armor armor, Weapon weapon, Magic magic)
             : base(stats, armor, weapon)
         {

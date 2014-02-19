@@ -5,7 +5,12 @@
 
     public static class Reaction
     {
+        #region Constants
+        private const long NO_REACTION = 3000;
+        #endregion
+
         #region Static Methods
+        //Stops the program until any button is presed 
         public static void Wait()
         {
             while (true)
@@ -19,6 +24,8 @@
             }
         }
 
+        /* Measures the reaction in miliseconds of the player 
+         * to press a certain key(the parameter) or breaks if there is no reaction in certain time */
         public static long MeasureReaction(char key)
         {
             Stopwatch timer = new Stopwatch();
@@ -34,7 +41,7 @@
                         return timer.ElapsedMilliseconds;
                     }
                 }
-                if (timer.ElapsedMilliseconds > 3000)
+                if (timer.ElapsedMilliseconds > NO_REACTION)
                 {
                     timer.Stop();
                     return timer.ElapsedMilliseconds;

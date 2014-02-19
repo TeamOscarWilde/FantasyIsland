@@ -1,4 +1,7 @@
-﻿// The player can choose the difficulty of each level and gain more experience if he chooses a more difficult level.
+﻿/* The player can choose the difficulty of each level and gain more experience if he chooses a more difficult level.
+ * Each level will have intro() and battle() methods. The intro explains to the player what enemies he will meet in
+ * that level and gives him an option to enter the level or go back and choose another level. 
+ * The battle method will contain the action of the level */
 
 namespace FantasyIsland
 {
