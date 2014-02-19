@@ -84,9 +84,9 @@ namespace FantasyIsland
             }
             private set
             {
-                if (value <= 0)
+                if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("The weight of the armor cannot be negative or equal to zero.");
+                    throw new ArgumentOutOfRangeException("The weight of the armor cannot be negative.");
                 }
 
                 this.weight = value;
@@ -101,9 +101,9 @@ namespace FantasyIsland
             }
             private set
             {
-                if (value <= 0)
+                if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("The strength of the armor cannot be negative or equal to zero.");
+                    throw new ArgumentOutOfRangeException("The strength of the armor cannot be negative.");
                 }
 
                 this.strength = value;

@@ -3,8 +3,8 @@ namespace FantasyIsland
 {
     public class Enemy : Player
     {
-        #region Constructors
         //TODO Make use of the Magics
+        #region Constructors
         public Enemy(PlayerStats stats, Armor armor, Weapon weapon, Magic magic)
             : base(stats, armor, weapon)
         {

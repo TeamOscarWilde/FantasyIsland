@@ -139,9 +139,9 @@ namespace FantasyIsland
             }
             private set
             {
-                if (value <= 0)
+                if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("The agility cannot be negative or equal to zero.");
+                    throw new ArgumentOutOfRangeException("The agility cannot be negative.");
                 }
 
                 this.agility = value;

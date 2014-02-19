@@ -33,9 +33,9 @@ namespace FantasyIsland
             }
             private set
             {
-                if (value <= 0)
+                if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("The attack power cannot be negative or equal to zero.");
+                    throw new ArgumentOutOfRangeException("The attack power cannot be negative.");
                 }
 
                 this.attackPower = value;
@@ -50,9 +50,9 @@ namespace FantasyIsland
             }
             private set
             {
-                if (value <= 0)
+                if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("The accuracy cannot be negative or equal to zero.");
+                    throw new ArgumentOutOfRangeException("The accuracy cannot be negative.");
                 }
 
                 this.accuracy = value;
@@ -67,9 +67,9 @@ namespace FantasyIsland
             }
             private set
             {
-                if (value <= 0)
+                if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("The defence cannot be negative or equal to zero.");
+                    throw new ArgumentOutOfRangeException("The defence cannot be negative.");
                 }
 
                 this.defence = value;

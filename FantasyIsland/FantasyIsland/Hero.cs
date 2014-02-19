@@ -2,8 +2,9 @@
 {
     public class Hero : Player
     {
-        #region Constructors
+
         //TODO Make use of the SuperPowers
+        #region Constructors
         public Hero(PlayerStats stats, Armor armor, Weapon weapon, SuperPower powers)
             : base(stats, armor, weapon)
         {
