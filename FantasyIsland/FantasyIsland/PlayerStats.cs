@@ -80,7 +80,7 @@ namespace FantasyIsland
 
         public decimal CalculateAgilityPercentage()
         {
-            return (100 - this.agility) / 100m;
+            return this.agility / 100m;
         }
     }
 }

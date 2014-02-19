@@ -1,4 +1,7 @@
-﻿namespace FantasyIsland
+﻿
+/* The player can choose the difficulty of each level and gain more experience if he chooses a more difficult level. */
+
+namespace FantasyIsland
 {
     using System;
 

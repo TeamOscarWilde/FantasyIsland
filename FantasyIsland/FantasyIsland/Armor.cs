@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+/* The armor si part of the invertory of the hero or the enemy. The strength of the armor affects 
+ * the defence qualities of the player - the higher the strength the higher the defence of the player.
+ * The weight of the armor affects the agility of the player - makes him slower and therefore reduces the agility.
+ * We have 4 preset static armors to use depending on the player's choice. */
 
 namespace FantasyIsland
 {

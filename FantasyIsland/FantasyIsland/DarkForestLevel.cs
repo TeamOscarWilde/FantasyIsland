@@ -1,13 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿
+/* Depending on the difficulty chosen we have preset times to react. 
+ * The agility also affects the available time to react. It is calculated with the following formula: 
+ * Preset time to react*(agility/100)  -  or the higher the agility is the more the time to react is.
+ * Example: If we have chosen easy difficulty(1800ms for fast reaction) and our hero has 70 agility his time to react calculates to:
+ * 1800*0.7 = 1260ms to react. If he had 30 agility he would have less time to react = 1800*0.3 = 540ms 
+ * The attack power of the enemy is calculated depending on the defensive power of our hero with this formula: 
+ * Enemy attack power*((100 - hero defence) / 100)   -   or the defence of the hero "neutralizes" part of the enemy's attack
+ * Example: If the enemy has 20 attack power and our hero has 80 defence the actual damage that will be caused is:
+ * 20*0.2 = 4 damage. If the hero had 20 defence the damage would have been 20*0.8 = 16 */ 
 
 namespace FantasyIsland
 {
+    using System;
+    using System.Threading;
     public class DarkForestLevel : Level
     {
         private const int ALPHABET_START_INDEX = 97;
