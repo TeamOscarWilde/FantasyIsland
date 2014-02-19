@@ -1,66 +1,111 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FantasyIsland
+﻿namespace FantasyIsland
 {
     public class Weapon
     {
-        protected Stats weaponStats;
-        private static Weapon bow = new Weapon(30, 0, 40);
-        private static Weapon flamethrower = new Weapon(35, 0, 30);
-        private static Weapon axe = new Weapon(35, 6, 25);
-        private static Weapon hammer = new Weapon(45, 0, 10);
-        private static Weapon sword = new Weapon(30, 12, 30);
-        private static Weapon dagger = new Weapon(25, 15, 25);
-        private static Weapon none = new Weapon(0, 0, 0);
+        #region Static Fields
+        private static Weapon none;
+        private static Weapon bow;
+        private static Weapon flamethrower;
+        private static Weapon axe;
+        private static Weapon hammer;
+        private static Weapon sword;
+        private static Weapon dagger;
+        #endregion
 
-        public Weapon(int attack, int accuracy, int defence)
+        #region Fields
+        private Stats weaponStats;
+        #endregion
+
+        #region Static Constructors
+        static Weapon()
         {
-            this.weaponStats = new Stats(attack, accuracy, defence);
+            none = new Weapon(0, 0, 0);
+            bow = new Weapon(30, 0, 40);
+            flamethrower = new Weapon(35, 0, 30);
+            axe = new Weapon(35, 6, 25);
+            hammer = new Weapon(45, 0, 10);
+            sword = new Weapon(30, 12, 30);
+            dagger = new Weapon(25, 15, 25);
         }
+        #endregion
 
-        public Stats WeaponStats
+        #region Constructors
+        public Weapon(int attackPower, int accuracy, int defence)
         {
-            get { return this.weaponStats; }
-            private set { this.weaponStats = value; }
+            this.WeaponStats = new Stats(attackPower, accuracy, defence);
+        }
+        #endregion
+
+        #region Static Properties
+        public static Weapon None
+        {
+            get
+            {
+                return none;
+            }
         }
 
         public static Weapon Bow
         {
-            get { return bow; }
+            get
+            {
+                return bow;
+            }
         }
 
         public static Weapon Flamethrower
         {
-            get { return flamethrower; }
+            get
+            {
+                return flamethrower;
+            }
         }
 
         public static Weapon Axe
         {
-            get { return axe; }
+            get
+            {
+                return axe;
+            }
         }
 
         public static Weapon Hammer
         {
-            get { return hammer; }
+            get
+            {
+                return hammer;
+            }
         }
 
         public static Weapon Sword
         {
-            get { return sword; }
+            get
+            {
+                return sword;
+            }
         }
 
         public static Weapon Dagger
         {
-            get { return dagger; }
+            get
+            {
+                return dagger;
+            }
         }
+        #endregion
 
-        public static Weapon None
+        #region Properties
+        public Stats WeaponStats
         {
-            get { return none; }
+            get
+            {
+                return new Stats(this.weaponStats.AttackPower, this.weaponStats.Accuracy, this.weaponStats.Defence);
+            }
+            private set
+            {
+                this.weaponStats = value;
+            }
         }
+        #endregion
     }
 }

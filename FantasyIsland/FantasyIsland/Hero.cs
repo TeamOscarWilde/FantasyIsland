@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FantasyIsland
+﻿namespace FantasyIsland
 {
     public class Hero : Player
     {
-        protected SuperPower powers;
-
-        public Hero(PlayerStats stats, Armor armor, Weapon weapon, SuperPower power)
+        #region Constructors
+        public Hero(PlayerStats stats, Armor armor, Weapon weapon, SuperPower powers)
             : base(stats, armor, weapon)
         {
-            this.powers = power;
+            this.Powers = powers;
         }
+        #endregion
+
+        #region Properties
+        public SuperPower Powers { get; private set; }
+        #endregion
     }
 }

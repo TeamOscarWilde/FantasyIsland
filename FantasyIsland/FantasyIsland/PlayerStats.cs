@@ -1,86 +1,169 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FantasyIsland
+﻿namespace FantasyIsland
 {
+    using System;
+
     public class PlayerStats : Stats
     {
-        protected int stamina;
-        protected int agility;
-        private static PlayerStats elf = new PlayerStats(30, 35, 40, 75, 35);
-        private static PlayerStats human = new PlayerStats(45, 35, 30, 75, 30);
-        private static PlayerStats dwarf = new PlayerStats(25, 30, 50, 60, 50);
-        private static PlayerStats humanEatingPlant = new PlayerStats(20, 5, 0, 5, 5);
-        private static PlayerStats witch = new PlayerStats(25, 50, 0, 5, 25);
-        private static PlayerStats zombie = new PlayerStats(30, 5, 5, 20, 5);
-        private static PlayerStats flyingDemon = new PlayerStats(15, 15, 10, 25, 10);
-        private static PlayerStats dragon = new PlayerStats(30, 15, 40, 60, 15);
+        #region Static Fields
+        private static PlayerStats elf;
+        private static PlayerStats human;
+        private static PlayerStats dwarf;
+        private static PlayerStats humanEatingPlant;
+        private static PlayerStats witch;
+        private static PlayerStats zombie;
+        private static PlayerStats flyingDemon;
+        private static PlayerStats dragon;
+        #endregion
 
-        public PlayerStats(int attack, int accuracy, int defence, int stamina, int agility)
-            : base(attack, accuracy, defence)
+        #region Fields
+        private int stamina;
+        private int agility; 
+        #endregion
+
+        #region Static Constructors
+        static PlayerStats()
         {
-            this.stamina = stamina;
-            this.agility = agility;
-        }
+            elf = new PlayerStats(30, 35, 40, 75, 35);
+            human = new PlayerStats(45, 35, 30, 75, 30);
+            dwarf = new PlayerStats(25, 30, 50, 60, 50);
+            humanEatingPlant = new PlayerStats(20, 5, 0, 5, 5);
+            witch = new PlayerStats(25, 50, 0, 5, 25);
+            zombie = new PlayerStats(30, 5, 5, 20, 5);
+            flyingDemon = new PlayerStats(15, 15, 10, 25, 10);
+            dragon = new PlayerStats(30, 15, 40, 60, 15);
+        } 
+        #endregion
 
+        #region Constructors
+        public PlayerStats(int attackPower, int accuracy, int defence, int stamina, int agility)
+            : base(attackPower, accuracy, defence)
+        {
+            this.Stamina = stamina;
+            this.Agility = agility;
+        } 
+        #endregion
+
+        #region StaticProperties
         public static PlayerStats Elf
         {
-            get { return elf; }
+            get
+            {
+                return elf;
+            }
         }
 
         public static PlayerStats Human
         {
-            get { return human; }
+            get
+            {
+                return human;
+            }
         }
 
         public static PlayerStats Dwarf
         {
-            get { return dwarf; }
+            get
+            {
+                return dwarf;
+            }
         }
 
         public static PlayerStats HumanEatingPlant
         {
-            get { return humanEatingPlant; }
+            get
+            {
+                return humanEatingPlant;
+            }
         }
 
         public static PlayerStats Witch
         {
-            get { return witch; }
+            get
+            {
+                return witch;
+            }
         }
 
         public static PlayerStats Zombie
         {
-            get { return zombie; }
+            get
+            {
+                return zombie;
+            }
         }
 
         public static PlayerStats FlyingDemon
         {
-            get { return flyingDemon; }
+            get
+            {
+                return flyingDemon;
+            }
         }
 
         public static PlayerStats Dragon
         {
-            get { return dragon; }
-        }
+            get
+            {
+                return dragon;
+            }
+        } 
+        #endregion
 
+        #region Properties
         public int Stamina
         {
-            get { return this.stamina; }
-            set { this.stamina = value; }
+            get
+            {
+                return this.stamina;
+            }
+            private set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("The stamina cannot be negative or equal to zero.");
+                }
+
+                this.stamina = value;
+            }
         }
 
         public int Agility
         {
-            get { return this.agility; }
-            private set { this.agility = value; }
-        }
+            get
+            {
+                return this.agility;
+            }
+            private set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentOutOfRangeException("The agility cannot be negative or equal to zero.");
+                }
 
+                this.agility = value;
+            }
+        }
+        #endregion
+
+        #region Methods
         public decimal CalculateAgilityPercentage()
         {
-            return this.agility / 100m;
+            decimal result = this.agility / 100m;
+
+            return result;
         }
+
+        public void LooseHealth(int amount)
+        {
+            if (amount == 0 || this.Stamina - amount < 0)
+            {
+                this.Stamina = 0;
+            }
+            else
+            {
+                this.Stamina -= amount;
+            }
+        }
+        #endregion
     }
 }
