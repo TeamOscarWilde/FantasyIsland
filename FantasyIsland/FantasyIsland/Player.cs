@@ -34,7 +34,7 @@ namespace FantasyIsland
         {
             get
             {
-                return new PlayerStats(this.playerStats.AttackPower, this.playerStats.Accuracy, 
+                return new PlayerStats(this.playerStats.AttackPower, this.playerStats.Accuracy,
                     this.playerStats.Defence, this.playerStats.Stamina, this.playerStats.Agility);
             }
             private set
@@ -79,6 +79,13 @@ namespace FantasyIsland
             {
                 this.totalStats = value;
             }
+        }
+        #endregion
+
+        #region Methods
+        public void ChangeStats(PlayerStats newStats)
+        {
+            this.PlayerStats = newStats;
         }
         #endregion
     }

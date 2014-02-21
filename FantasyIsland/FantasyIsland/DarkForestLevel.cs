@@ -111,19 +111,19 @@ namespace FantasyIsland
                 else if (reaction >= this.fastReaction * agilityEffect && reaction < this.averageReaction * agilityEffect)
                 {
                     Console.WriteLine("Small bite! Little health lost!");
-                    hero.PlayerStats.LooseHealth(bitePower);
+                    hero.ChangeStats(hero.PlayerStats.LooseHealth(bitePower));
                     Thread.Sleep(rand.Next(1500, 3500));
                 }
                 else if (reaction >= this.averageReaction * agilityEffect && reaction < this.slowReaction * agilityEffect)
                 {
                     Console.WriteLine("Big bite! A lot of health lost!");
-                    hero.PlayerStats.LooseHealth(bitePower * 2);
+                    hero.ChangeStats(hero.PlayerStats.LooseHealth(bitePower * 2));
                     Thread.Sleep(rand.Next(1500, 3500));
                 }
                 else
                 {
                     Console.WriteLine("Too slow reaction! You are dead!");
-                    hero.PlayerStats.LooseHealth(0);
+                    hero.ChangeStats(hero.PlayerStats.LooseHealth(0));
                     break;
                 }
             }

@@ -124,7 +124,7 @@ namespace FantasyIsland
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("The stamina cannot be negative or equal to zero.");
+                    throw new ArgumentOutOfRangeException("The stamina cannot be negative.");
                 }
 
                 this.stamina = value;
@@ -157,7 +157,7 @@ namespace FantasyIsland
             return result;
         }
 
-        public void LooseHealth(int amount)
+        public PlayerStats LooseHealth(int amount)
         {
             if (amount == 0 || this.Stamina - amount < 0)
             {
@@ -167,6 +167,8 @@ namespace FantasyIsland
             {
                 this.Stamina -= amount;
             }
+
+            return new PlayerStats(this.AttackPower, this.Accuracy, this.Defence, this.Stamina, this.Agility);
         }
         #endregion
     }
