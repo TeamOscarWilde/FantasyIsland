@@ -157,7 +157,7 @@ namespace FantasyIsland
             return result;
         }
 
-        public PlayerStats LooseHealth(int amount)
+        public void LooseHealth(int amount)
         {
             if (amount == 0 || this.Stamina - amount < 0)
             {
@@ -167,8 +167,6 @@ namespace FantasyIsland
             {
                 this.Stamina -= amount;
             }
-
-            return new PlayerStats(this.AttackPower, this.Accuracy, this.Defence, this.Stamina, this.Agility);
         }
         #endregion
     }

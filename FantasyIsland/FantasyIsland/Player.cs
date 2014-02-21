@@ -83,9 +83,9 @@ namespace FantasyIsland
         #endregion
 
         #region Methods
-        public void ChangeStats(PlayerStats newStats)
+        public void LooseHealth(int amount)
         {
-            this.PlayerStats = newStats;
+            this.playerStats.LooseHealth(amount);
         }
         #endregion
     }
