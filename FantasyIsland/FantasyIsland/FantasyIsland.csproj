@@ -48,8 +48,6 @@
     <Compile Include="Enemy.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Hero.cs" />
-    <Compile Include="IBattle.cs" />
-    <Compile Include="IIntro.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="Magic.cs" />
     <Compile Include="Player.cs" />

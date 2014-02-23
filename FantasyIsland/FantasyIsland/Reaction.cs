@@ -47,7 +47,32 @@
                     return timer.ElapsedMilliseconds;
                 }
             }
-        } 
+        }
+
+        public static bool CheckKey(ConsoleKey yesKey, ConsoleKey noKey)
+        {
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo info = Console.ReadKey(true);
+                    if (info.Key == yesKey)
+                    {
+                        return true;
+                    }
+                    else if (info.Key == noKey)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Key not reconized. Press {0} for Yes or {1} for No",
+                            yesKey.ToString(), noKey.ToString());
+                    }
+                }
+            }
+        }
+
         #endregion
     }
 }

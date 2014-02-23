@@ -21,21 +21,21 @@ namespace FantasyIsland
 
         #region Fields
         private int stamina;
-        private int agility; 
+        private int agility;
         #endregion
 
         #region Static Constructors
         static PlayerStats()
         {
-            elf = new PlayerStats(30, 35, 40, 75, 35);
-            human = new PlayerStats(45, 35, 30, 75, 30);
-            dwarf = new PlayerStats(25, 30, 50, 60, 50);
+            elf = new PlayerStats(30, 35, 40, 75, 85);
+            human = new PlayerStats(45, 35, 30, 75, 80);
+            dwarf = new PlayerStats(25, 30, 50, 60, 100);
             humanEatingPlant = new PlayerStats(20, 5, 0, 5, 5);
             witch = new PlayerStats(25, 50, 0, 5, 25);
             zombie = new PlayerStats(30, 5, 5, 20, 5);
             flyingDemon = new PlayerStats(15, 15, 10, 25, 10);
             dragon = new PlayerStats(30, 15, 40, 60, 15);
-        } 
+        }
         #endregion
 
         #region Constructors
@@ -44,7 +44,7 @@ namespace FantasyIsland
         {
             this.Stamina = stamina;
             this.Agility = agility;
-        } 
+        }
         #endregion
 
         #region StaticProperties
@@ -110,7 +110,7 @@ namespace FantasyIsland
             {
                 return dragon;
             }
-        } 
+        }
         #endregion
 
         #region Properties
@@ -157,6 +157,23 @@ namespace FantasyIsland
             return result;
         }
 
+        public void DecreaseAgility(int amount)
+        {
+            if (amount == 0 || this.Stamina - amount < 0)
+            {
+                this.Agility = 0;
+            }
+            else
+            {
+                this.Agility -= amount;
+            }
+        }
+
+        public void IncreaseHealth(int amount)
+        {
+            this.Stamina += amount;
+        }
+
         public void LooseHealth(int amount)
         {
             if (amount == 0 || this.Stamina - amount < 0)
@@ -178,6 +195,7 @@ namespace FantasyIsland
         {
             this.AttackPower += amount;
         }
+
         #endregion
     }
 }

@@ -19,7 +19,7 @@
         private readonly decimal averageReaction;
         private readonly decimal slowReaction;
         private readonly decimal initialHitPercentage;
-
+        //private Hero hero;
 
         //Zombie damage
         private int strongHit;
@@ -33,8 +33,8 @@
         #endregion
 
         #region Constructors
-        public ZombieMountain(Difficulty difficulty)
-            : base(difficulty)
+        public ZombieMountain(Difficulty difficulty, Hero hero)
+            : base(difficulty, hero)
         {
             if (difficulty == FantasyIsland.Difficulty.Easy)
             {
@@ -64,7 +64,14 @@
         #endregion
 
         #region Methods
-        public override void Intro()
+        public override void Start()
+        {
+            this.Intro();
+            this.Battle();
+            this.LevelFinished();
+        }
+
+        protected override void Intro()
         {
             Console.CursorVisible = false;
             Console.WriteLine("You have entered the ZOMBIE MOUNTAIN!");
@@ -85,30 +92,30 @@
             Reaction.Wait();
         }
 
-        public override void Battle(Hero hero)
+        protected override void Battle()
         {
             int zombies = rand.Next(MIN_ZOMBIES, MAX_ZOMBIES);
             int zombieKills = 0;
             long reaction = 0;
-            this.agilityEffect = hero.PlayerStats.CalculateAgilityPercentage();
+            this.agilityEffect = this.hero.PlayerStats.CalculateAgilityPercentage();
             chanceToBeHit = initialHitPercentage - agilityEffect;
-            string crossbowChoice;
+            
 
             Thread.Sleep(1000);
-            strongHit = (int)(enemy.PlayerStats.AttackPower * hero.PlayerStats.CalculateDefencePercentage() - agilityEffect);
-            heroHit = (int)(hero.PlayerStats.AttackPower * enemy.PlayerStats.CalculateDefencePercentage());
+            strongHit = (int)(enemy.PlayerStats.AttackPower * this.hero.PlayerStats.CalculateDefencePercentage() - agilityEffect);
+            heroHit = (int)(this.hero.PlayerStats.AttackPower * enemy.PlayerStats.CalculateDefencePercentage());
 
             for (int zombie = 0; zombie < zombies; zombie++)
             {
                 enemy.ResetHealth();
-                while (!(enemy.PlayerStats.Stamina <= 0 || hero.PlayerStats.Stamina <= 0))
+                while (!(enemy.PlayerStats.Stamina <= 0 || this.hero.PlayerStats.Stamina <= 0))
                 {
 
                     decimal chance = rand.Next(0, 101);
                     Console.Clear();
                     Console.WriteLine("There is a zombie near you!");
-                    Console.Write("\nPlayer Health: {0}", hero.PlayerStats.Stamina);
-                    Console.Write("   Attack power: {0}", hero.PlayerStats.AttackPower);
+                    Console.Write("\nPlayer Health: {0}", this.hero.PlayerStats.Stamina);
+                    Console.Write("   Attack power: {0}", this.hero.PlayerStats.AttackPower);
                     Console.Write("   Zombie Health: {0}", enemy.PlayerStats.Stamina);
                     Console.WriteLine("   Zombie kills: {0}", zombieKills);
 
@@ -128,14 +135,14 @@
                     {
                         Console.WriteLine("A decent attack! You lost some health though!");
                         enemy.LooseHealth(heroHit - 15);
-                        hero.LooseHealth(strongHit);
+                        this.hero.LooseHealth(strongHit);
                         Thread.Sleep(2000);
                     }
                     else if (reaction <= this.slowReaction)
                     {
                         Console.WriteLine("Poorly done... The zombie almost killed you!");
                         enemy.LooseHealth(heroHit - 30);
-                        hero.LooseHealth(strongHit * 2);
+                        this.hero.LooseHealth(strongHit * 2);
                         Thread.Sleep(2000);
                     }
                     else
@@ -159,12 +166,12 @@
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("You have been hit by the zombie!");
                             Console.ForegroundColor = ConsoleColor.Gray;
-                            hero.LooseHealth(0);
+                            this.hero.LooseHealth(0);
                             Thread.Sleep(1000);
                         }
 
                     }
-                    if (hero.PlayerStats.Stamina <= 0)
+                    if (this.hero.PlayerStats.Stamina <= 0)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("YOU ARE DEAD!");
@@ -174,7 +181,7 @@
                     else if (enemy.PlayerStats.Stamina <= 0)
                     {
                         zombieKills++;
-                        hero.AddToAttack(5);
+                        this.hero.AddToAttack(5);
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("\n\nYOU DEFEATED THE ZOMBIE!\nYou have been granted +5 attack power!");
                         Console.ForegroundColor = ConsoleColor.Gray;
@@ -186,7 +193,11 @@
                 }
 
             }
-            if (hero.PlayerStats.Stamina > 0)
+        }
+        protected override void LevelFinished()
+        {
+            string crossbowChoice;
+            if (this.hero.PlayerStats.Stamina > 0)
             {
                 Console.Clear();
                 Console.WriteLine("It seems like that was the last of them.");
@@ -196,14 +207,14 @@
             Thread.Sleep(1500);
             Console.WriteLine("\nGuess he wasn't that lucky with the zombies...");
             Thread.Sleep(1500);
-            Console.WriteLine("\nYOU HAVE FOUND A LEGENDARY CROSSBOW!\nIt might come in handy!!! Would you like to pick it up? YES or NO?");
+            Console.WriteLine("\nYOU HAVE FOUND HIS LEGENDARY CROSSBOW!\nIt might come in handy!!! Would you like to pick it up? YES or NO?");
             crossbowChoice = Console.ReadLine().ToUpper();
 
             if ((crossbowChoice.CompareTo("YES") == 0))
             {
                 Thread.Sleep(1500);
                 Console.WriteLine("\nPicking up the item!");
-                hero.Weapon = Weapon.CrossBow;
+                this.hero.Weapon = Weapon.CrossBow;
             }
             else if ((crossbowChoice.CompareTo("NO") == 0))
             {
@@ -214,7 +225,7 @@
             {
                 Thread.Sleep(1500);
                 Console.WriteLine("\nInvalid input. Picking up the item.");
-                hero.Weapon = Weapon.CrossBow;
+                this.hero.Weapon = Weapon.CrossBow;
             }
             Thread.Sleep(1500);
             Console.ForegroundColor = ConsoleColor.Green;
