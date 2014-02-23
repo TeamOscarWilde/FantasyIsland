@@ -31,7 +31,7 @@ namespace FantasyIsland
             {
                 return this.attackPower;
             }
-            private set
+            set
             {
                 if (value < 0)
                 {

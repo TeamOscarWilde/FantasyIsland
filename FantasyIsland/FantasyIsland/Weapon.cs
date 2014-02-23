@@ -5,6 +5,7 @@
         #region Static Fields
         private static Weapon none;
         private static Weapon bow;
+        private static Weapon crossBow;
         private static Weapon flamethrower;
         private static Weapon axe;
         private static Weapon hammer;
@@ -21,6 +22,7 @@
         {
             none = new Weapon(0, 0, 0);
             bow = new Weapon(30, 40, 0);
+            crossBow = new Weapon(35, 50, 0);
             flamethrower = new Weapon(35, 30, 0);
             axe = new Weapon(35, 25, 6);
             hammer = new Weapon(45, 10, 0);
@@ -50,6 +52,14 @@
             get
             {
                 return bow;
+            }
+        }
+
+        public static Weapon CrossBow
+        {
+            get
+            {
+                return crossBow;
             }
         }
 

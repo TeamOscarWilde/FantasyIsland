@@ -168,6 +168,16 @@ namespace FantasyIsland
                 this.Stamina -= amount;
             }
         }
+
+        public void ResetHealth()
+        {
+            this.Stamina = 40;
+        }
+
+        public void AddToAttack(int amount)
+        {
+            this.AttackPower += amount;
+        }
         #endregion
     }
 }

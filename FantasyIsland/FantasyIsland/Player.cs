@@ -62,7 +62,7 @@ namespace FantasyIsland
                 return new Weapon(this.weapon.WeaponStats.AttackPower, this.weapon.WeaponStats.Accuracy, 
                     this.weapon.WeaponStats.Defence);
             }
-            private set
+            set
             {
                 this.weapon = value;
             }
@@ -86,6 +86,16 @@ namespace FantasyIsland
         public void LooseHealth(int amount)
         {
             this.playerStats.LooseHealth(amount);
+        }
+
+        public void ResetHealth()
+        {
+            this.playerStats.ResetHealth();
+        }
+
+        public void AddToAttack(int amount)
+        {
+            this.playerStats.AddToAttack(amount);
         }
         #endregion
     }

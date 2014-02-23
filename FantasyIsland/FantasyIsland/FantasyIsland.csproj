@@ -60,6 +60,7 @@
     <Compile Include="Stats.cs" />
     <Compile Include="SuperPower.cs" />
     <Compile Include="Weapon.cs" />
+    <Compile Include="ZombieMountain.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
