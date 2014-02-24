@@ -7,20 +7,22 @@ namespace FantasyIsland
 {
     using System;
 
-    public abstract class Level : IIntro, IBattle
+    public abstract class Level 
     {
         #region Fields
-        private Enemy enemy; 
+        private Enemy enemy;
         #endregion
 
         #region Constructors
-        protected Level(Difficulty difficulty)
+        protected Level(Difficulty difficulty, Hero hero)
         {
             this.Difficulty = difficulty;
+            this.hero = hero;
         }
         #endregion
 
         #region Properties
+        public Hero hero { get; protected set; }
         public Difficulty Difficulty { get; private set; }
 
         public Enemy Enemy
@@ -37,9 +39,10 @@ namespace FantasyIsland
         #endregion
 
         #region Methods
-        public abstract void Intro();
-
-        public abstract void Battle(Hero hero);
+        public abstract void Start();
+        protected abstract void Intro();
+        protected abstract void Battle();
+        protected abstract void LevelFinished();
         #endregion
     }
 }

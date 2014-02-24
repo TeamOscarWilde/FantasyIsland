@@ -2,6 +2,6 @@
 {
     public enum ReactionTime
     {
-        UltraSlow = 2400, Slow = 2100, Normal = 1800, Fast = 1500, UltraFast = 1200
+        UltraSlow = 2800, Slow = 2500, Normal = 2200, Fast = 1900, UltraFast = 1600
     }
 }

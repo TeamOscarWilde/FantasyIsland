@@ -10,7 +10,7 @@ namespace FantasyIsland
         private PlayerStats playerStats;
         private Armor armor;
         private Weapon weapon;
-        private PlayerStats totalStats; 
+        private PlayerStats totalStats;
         #endregion
 
         #region Constructors
@@ -26,7 +26,7 @@ namespace FantasyIsland
             int totalAgility = playerStats.Agility - armor.Weight;
 
             this.TotalStats = new PlayerStats(totalAttackPower, totalAccuracy, totalDefence, playerStats.Stamina, totalAgility);
-        } 
+        }
         #endregion
 
         #region Properties
@@ -59,10 +59,10 @@ namespace FantasyIsland
         {
             get
             {
-                return new Weapon(this.weapon.WeaponStats.AttackPower, this.weapon.WeaponStats.Accuracy, 
+                return new Weapon(this.weapon.WeaponStats.AttackPower, this.weapon.WeaponStats.Accuracy,
                     this.weapon.WeaponStats.Defence);
             }
-            private set
+            set
             {
                 this.weapon = value;
             }
@@ -72,7 +72,7 @@ namespace FantasyIsland
         {
             get
             {
-                return new PlayerStats(this.totalStats.AttackPower, this.totalStats.Accuracy, 
+                return new PlayerStats(this.totalStats.AttackPower, this.totalStats.Accuracy,
                     this.totalStats.Defence, this.totalStats.Stamina, this.totalStats.Agility);
             }
             private set
@@ -83,10 +83,30 @@ namespace FantasyIsland
         #endregion
 
         #region Methods
+        public void DecreaseAgility(int amount)
+        {
+            this.playerStats.DecreaseAgility(amount);
+        }
         public void LooseHealth(int amount)
         {
             this.playerStats.LooseHealth(amount);
         }
+
+        public void IncreaseHealth(int amount)
+        {
+            this.playerStats.IncreaseHealth(amount);
+        }
+
+        public void ResetHealth()
+        {
+            this.playerStats.ResetHealth();
+        }
+
+        public void AddToAttack(int amount)
+        {
+            this.playerStats.AddToAttack(amount);
+        }
+
         #endregion
     }
 }
