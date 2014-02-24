@@ -44,10 +44,13 @@
   <ItemGroup>
     <Compile Include="Armor.cs" />
     <Compile Include="DarkForestLevel.cs" />
+    <Compile Include="DemonVaultLevel.cs" />
     <Compile Include="Difficulty.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Hero.cs" />
+    <Compile Include="IBattle.cs" />
+    <Compile Include="IIntro.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="Magic.cs" />
     <Compile Include="Player.cs" />
@@ -58,7 +61,6 @@
     <Compile Include="Stats.cs" />
     <Compile Include="SuperPower.cs" />
     <Compile Include="Weapon.cs" />
-    <Compile Include="ZombieMountain.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
