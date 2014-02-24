@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Armor.cs" />
     <Compile Include="DarkForestLevel.cs" />
+    <Compile Include="DemonVaultLevel.cs" />
     <Compile Include="Difficulty.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="Game.cs" />
