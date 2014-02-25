@@ -79,7 +79,7 @@ namespace FantasyIsland
             Console.WriteLine("You successfully passed the Demon Vault!");
             Console.WriteLine("It looks like a miracle, but you take the wings\nfrom demon and now you can fly!");
             Console.WriteLine("As a result your Agility(speed) increases twice!");
-            hero.IncreaseAgility(hero.PlayerStats.Agility); //this will double the hero agility
+            Hero.IncreaseAgility(this.Hero.PlayerStats.Agility); //this will double the hero agility
             this.ChangeConsoleColor(ConsoleColor.White);
         }
 
@@ -91,7 +91,7 @@ namespace FantasyIsland
             Console.Clear();
             int randomNumber = this.rand.Next(101);
             int damageDemon = this.enemyDemon.TotalStats.AttackPower; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! +- % Accuracy
-            int damageHero = this.hero.PlayerStats.AttackPower * this.hero.PlayerStats.Accuracy / 100; //!!!!! +- % Accuracy
+            int damageHero = this.Hero.PlayerStats.AttackPower * this.Hero.PlayerStats.Accuracy / 100; //!!!!! +- % Accuracy
             this.enemyDemon.ResetHealth();
             //How to check what kind of weapon the hero has??? !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             bool isLongRangeWeapon = false;
@@ -101,7 +101,7 @@ namespace FantasyIsland
                 ChangeConsoleColor(ConsoleColor.Red);
                 Console.WriteLine("SUDDENLY! A demon surprises you with hit from the back!");
                 Console.WriteLine("Now you are caught and dropped from high altitude! Damage: {0}", damageDemon/*implement demon magic HighDrop*/);
-                this.hero.LooseHealth(damageDemon);
+                this.Hero.LooseHealth(damageDemon);
             }
             else
             {
@@ -112,10 +112,10 @@ namespace FantasyIsland
             while (true)
             {
                 ChangeConsoleColor(ConsoleColor.Yellow);
-                Console.WriteLine("Hero HEALTH: {0}", this.hero.PlayerStats.Stamina);
+                Console.WriteLine("Hero HEALTH: {0}", this.Hero.PlayerStats.Stamina);
                 Console.WriteLine("Demon HEALTH: {0}", this.enemyDemon.PlayerStats.Stamina);
 
-                if (this.hero.PlayerStats.Stamina <= 0)
+                if (this.Hero.PlayerStats.Stamina <= 0)
                 {
                     this.ChangeConsoleColor(ConsoleColor.Red);
                     Console.WriteLine("The flying demon killed you!");
@@ -161,7 +161,7 @@ namespace FantasyIsland
                 }
                 ChangeConsoleColor(ConsoleColor.Red);
                 Console.WriteLine("Demon successfully grabbed you and threw you into a stone. Damage: {0}", damageDemon);
-                this.hero.LooseHealth(damageDemon);
+                this.Hero.LooseHealth(damageDemon);
 
                 
             }
@@ -190,7 +190,7 @@ namespace FantasyIsland
             Console.WriteLine("You saw the demon and immediately prepare to shoot.");
             this.ChangeConsoleColor(ConsoleColor.Green);
 
-            if (this.hero.PlayerStats.Agility >= 90 && rand.Next(11) >= 5) // 50% chance to shoot twice
+            if (this.Hero.PlayerStats.Agility >= 90 && rand.Next(11) >= 5) // 50% chance to shoot twice
             {
                 Console.WriteLine("You are fast enough to shoot at the demon\ntwo times while it is approaching!");
                 this.enemyDemon.LooseHealth(damageHero);
