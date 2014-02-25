@@ -7,7 +7,7 @@ namespace FantasyIsland
 {
     using System;
 
-    public abstract class Level 
+    public abstract class Level
     {
         #region Fields
         private Enemy enemy;
@@ -22,7 +22,7 @@ namespace FantasyIsland
         #endregion
 
         #region Properties
-        public Hero Hero { get; protected set; }
+        public Hero Hero { get; private set; }
         public Difficulty Difficulty { get; private set; }
 
         public Enemy Enemy

@@ -1,0 +1,10 @@
+You have entered the ZOMBIE MOUNTAIN!
+This mountain is filled with zombies!
+They are blind but really dangerous. 
+They can feel your scent and come after you!
+You have to move fast and attack swiftly!
+The more agility you have the less damage the zombies
+will do to you or even miss you!
+To avoid the attack and destroy the zombie you will
+have to press a certain key as fast as you can!
+Press any key to start when you are ready!

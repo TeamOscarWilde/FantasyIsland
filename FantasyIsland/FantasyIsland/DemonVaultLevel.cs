@@ -6,6 +6,7 @@ namespace FantasyIsland
 {
     using System;
     using System.Threading;
+    using System.IO;
 
     public class DemonVaultLevel : Level
     {
@@ -43,22 +44,16 @@ namespace FantasyIsland
         #region Methods
         protected override void Intro()
         {
-            Console.WriteLine("You entered the FLYING DEMONS' vault!");
-            Thread.Sleep(1500);
-            Console.WriteLine("\nThis is dark place with strange noices and you better be careful.");
-            Thread.Sleep(1500);
-            Console.WriteLine("Demons will try to catch you and throw you in some\ndirection in order to hurt and kill you");
-            Thread.Sleep(2000);
-            Console.WriteLine("Shooting weapons will be your best defence.");
-            Thread.Sleep(1500);
-            Console.WriteLine("Get ready for the battle!");
-            Thread.Sleep(1500);
-            Console.WriteLine("\nPress any key to start when you are ready!");
+            using (StreamReader sr = new StreamReader(@"..\..\Text\DemonVaultIntro.txt"))
+            {
+                sr.ReadAndType();
+            }
             Reaction.Wait();
         }
 
         public override void Start()
         {
+            Intro();
             Console.CursorVisible = false;
             Console.Clear();
             //this.Intro(); //UNCOMMENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -76,9 +71,10 @@ namespace FantasyIsland
         {
             Console.Clear();
             this.ChangeConsoleColor(ConsoleColor.Yellow);
-            Console.WriteLine("You successfully passed the Demon Vault!");
-            Console.WriteLine("It looks like a miracle, but you take the wings\nfrom demon and now you can fly!");
-            Console.WriteLine("As a result your Agility(speed) increases twice!");
+            using (StreamReader sr = new StreamReader(@"..\..\Text\DemonVaultFinished.txt"))
+            {
+                sr.ReadAndType();
+            }
             Hero.IncreaseAgility(this.Hero.PlayerStats.Agility); //this will double the hero agility
             this.ChangeConsoleColor(ConsoleColor.White);
         }

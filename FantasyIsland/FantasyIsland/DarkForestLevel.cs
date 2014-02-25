@@ -14,6 +14,7 @@ namespace FantasyIsland
 {
     using System;
     using System.Threading;
+    using System.IO;
 
     public class DarkForestLevel : Level
     {
@@ -77,17 +78,10 @@ namespace FantasyIsland
         protected override void Intro()
         {
             Console.CursorVisible = false;
-            Console.WriteLine("You entered the dark forest of human-eating plants.");
-            //Thread.Sleep(1500);
-            Console.WriteLine("\nBe careful - the dangerous plants are everywhere!");
-            //Thread.Sleep(1500);
-            Console.WriteLine("\nYou will be attacked several times. ");
-            //Thread.Sleep(1500);
-            Console.WriteLine("\nYou have to be quick to avoid being bitten or eaten.");
-            //Thread.Sleep(1500);
-            Console.WriteLine("\nTo avoid the attack and destroy the plant you will \nhave to press a certain key as fast as you can!");
-            //Thread.Sleep(2000);
-            Console.WriteLine("\nPress any key to start when you are ready!");
+            using (StreamReader sr = new StreamReader(@"..\..\Text\DarkForestIntro.txt"))
+            {
+                sr.ReadAndType();
+            }
             Reaction.Wait();
         }
         
@@ -121,18 +115,10 @@ namespace FantasyIsland
             if (this.Hero.PlayerStats.Stamina > 0)
             {
                 Console.Clear();
-                Console.WriteLine("Congratulations! You passed the dark forest.");
-                //Thread.Sleep(2000);
-                Console.WriteLine("You reached a magic healing plant. Your health is back to it's initial level");
-                //Thread.Sleep(2000);
-                Console.WriteLine("You can take some magic leafs from the plant with you");
-                ///Thread.Sleep(2000);
-                Console.WriteLine("That will increase your health level, but the plant has a very strong scent.");
-                //Thread.Sleep(1000);
-                Console.WriteLine("It causes dizzyness and decreases your agility level.");
-                //Thread.Sleep(2000);
-                Console.WriteLine("Would you like to take the magic leafs with you? ");
-                Console.WriteLine("Press Spacebar for Yes or Escape for No ...");
+                using (StreamReader sr = new StreamReader(@"..\..\Text\DarkForestFinished.txt"))
+                {
+                    sr.ReadAndType();
+                }
                 bool decision = Reaction.CheckKey(ConsoleKey.Spacebar, ConsoleKey.Escape);
                 if (decision)
                 {
@@ -181,6 +167,7 @@ namespace FantasyIsland
             Console.WriteLine("DOUBLE ATTACK !!! \nPRESS {0} + {1} TO COUNTER-ATTACK!!!", keysToPress[0], keysToPress[1]);
             Console.ForegroundColor = ConsoleColor.Gray;
             long reaction = Reaction.MeasureReaction(keysToPress[0]) + Reaction.MeasureReaction(keysToPress[1]);
+            ReactionResult(reaction, DOUBLE_ATTACK_ADDITIONAL_TIME);
             if (rand.Next(1, 11) < 3)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -189,7 +176,6 @@ namespace FantasyIsland
                 Thread.Sleep(1500);
                 DoubleAttack();
             }
-            ReactionResult(reaction, DOUBLE_ATTACK_ADDITIONAL_TIME);
         }
 
         private char GenerateRandomKey()
