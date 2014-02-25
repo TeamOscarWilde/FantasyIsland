@@ -17,12 +17,12 @@ namespace FantasyIsland
         protected Level(Difficulty difficulty, Hero hero)
         {
             this.Difficulty = difficulty;
-            this.hero = hero;
+            this.Hero = hero;
         }
         #endregion
 
         #region Properties
-        public Hero hero { get; protected set; }
+        public Hero Hero { get; protected set; }
         public Difficulty Difficulty { get; private set; }
 
         public Enemy Enemy

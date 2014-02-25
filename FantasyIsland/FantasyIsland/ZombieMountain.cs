@@ -66,6 +66,10 @@
         #region Methods
         public override void Start()
         {
+            if (this.Hero.PlayerStats.Stamina <= 0)
+            {
+                return;
+            }
             this.Intro();
             this.Battle();
             this.LevelFinished();
@@ -97,25 +101,25 @@
             int zombies = rand.Next(MIN_ZOMBIES, MAX_ZOMBIES);
             int zombieKills = 0;
             long reaction = 0;
-            this.agilityEffect = this.hero.PlayerStats.CalculateAgilityPercentage();
+            this.agilityEffect = this.Hero.PlayerStats.CalculateAgilityPercentage();
             chanceToBeHit = initialHitPercentage - agilityEffect;
             
 
             Thread.Sleep(1000);
-            strongHit = (int)(enemy.PlayerStats.AttackPower * this.hero.PlayerStats.CalculateDefencePercentage() - agilityEffect);
-            heroHit = (int)(this.hero.PlayerStats.AttackPower * enemy.PlayerStats.CalculateDefencePercentage());
+            strongHit = (int)(enemy.PlayerStats.AttackPower * this.Hero.PlayerStats.CalculateDefencePercentage() - agilityEffect);
+            heroHit = (int)(this.Hero.PlayerStats.AttackPower * enemy.PlayerStats.CalculateDefencePercentage());
 
             for (int zombie = 0; zombie < zombies; zombie++)
             {
                 enemy.ResetHealth();
-                while (!(enemy.PlayerStats.Stamina <= 0 || this.hero.PlayerStats.Stamina <= 0))
+                while (!(enemy.PlayerStats.Stamina <= 0 || this.Hero.PlayerStats.Stamina <= 0))
                 {
 
                     decimal chance = rand.Next(0, 101);
                     Console.Clear();
                     Console.WriteLine("There is a zombie near you!");
-                    Console.Write("\nPlayer Health: {0}", this.hero.PlayerStats.Stamina);
-                    Console.Write("   Attack power: {0}", this.hero.PlayerStats.AttackPower);
+                    Console.Write("\nPlayer Health: {0}", this.Hero.PlayerStats.Stamina);
+                    Console.Write("   Attack power: {0}", this.Hero.PlayerStats.AttackPower);
                     Console.Write("   Zombie Health: {0}", enemy.PlayerStats.Stamina);
                     Console.WriteLine("   Zombie kills: {0}", zombieKills);
 
@@ -135,14 +139,14 @@
                     {
                         Console.WriteLine("A decent attack! You lost some health though!");
                         enemy.LooseHealth(heroHit - 15);
-                        this.hero.LooseHealth(strongHit);
+                        this.Hero.LooseHealth(strongHit);
                         Thread.Sleep(2000);
                     }
                     else if (reaction <= this.slowReaction)
                     {
                         Console.WriteLine("Poorly done... The zombie almost killed you!");
                         enemy.LooseHealth(heroHit - 30);
-                        this.hero.LooseHealth(strongHit * 2);
+                        this.Hero.LooseHealth(strongHit * 2);
                         Thread.Sleep(2000);
                     }
                     else
@@ -166,12 +170,12 @@
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("You have been hit by the zombie!");
                             Console.ForegroundColor = ConsoleColor.Gray;
-                            this.hero.LooseHealth(0);
+                            this.Hero.LooseHealth(0);
                             Thread.Sleep(1000);
                         }
 
                     }
-                    if (this.hero.PlayerStats.Stamina <= 0)
+                    if (this.Hero.PlayerStats.Stamina <= 0)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("YOU ARE DEAD!");
@@ -181,7 +185,7 @@
                     else if (enemy.PlayerStats.Stamina <= 0)
                     {
                         zombieKills++;
-                        this.hero.AddToAttack(5);
+                        this.Hero.AddToAttack(5);
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("\n\nYOU DEFEATED THE ZOMBIE!\nYou have been granted +5 attack power!");
                         Console.ForegroundColor = ConsoleColor.Gray;
@@ -197,7 +201,7 @@
         protected override void LevelFinished()
         {
             string crossbowChoice;
-            if (this.hero.PlayerStats.Stamina > 0)
+            if (this.Hero.PlayerStats.Stamina > 0)
             {
                 Console.Clear();
                 Console.WriteLine("It seems like that was the last of them.");
@@ -214,7 +218,7 @@
             {
                 Thread.Sleep(1500);
                 Console.WriteLine("\nPicking up the item!");
-                this.hero.Weapon = Weapon.CrossBow;
+                this.Hero.Weapon = Weapon.CrossBow;
             }
             else if ((crossbowChoice.CompareTo("NO") == 0))
             {
@@ -225,7 +229,7 @@
             {
                 Thread.Sleep(1500);
                 Console.WriteLine("\nInvalid input. Picking up the item.");
-                this.hero.Weapon = Weapon.CrossBow;
+                this.Hero.Weapon = Weapon.CrossBow;
             }
             Thread.Sleep(1500);
             Console.ForegroundColor = ConsoleColor.Green;

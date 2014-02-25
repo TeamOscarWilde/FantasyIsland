@@ -43,8 +43,8 @@ namespace FantasyIsland
         public DarkForestLevel(Difficulty difficulty, Hero hero)
             : base(difficulty, hero)
         {
-            this.bitePower = (int)(enemy.PlayerStats.AttackPower * this.hero.PlayerStats.CalculateDefencePercentage());
-            this.agilityEffect = this.hero.PlayerStats.CalculateAgilityPercentage();
+            this.bitePower = (int)(enemy.PlayerStats.AttackPower * this.Hero.PlayerStats.CalculateDefencePercentage());
+            this.agilityEffect = this.Hero.PlayerStats.CalculateAgilityPercentage();
 
             if (difficulty == FantasyIsland.Difficulty.Easy)
             {
@@ -78,15 +78,15 @@ namespace FantasyIsland
         {
             Console.CursorVisible = false;
             Console.WriteLine("You entered the dark forest of human-eating plants.");
-            Thread.Sleep(1500);
+            //Thread.Sleep(1500);
             Console.WriteLine("\nBe careful - the dangerous plants are everywhere!");
-            Thread.Sleep(1500);
+            //Thread.Sleep(1500);
             Console.WriteLine("\nYou will be attacked several times. ");
-            Thread.Sleep(1500);
+            //Thread.Sleep(1500);
             Console.WriteLine("\nYou have to be quick to avoid being bitten or eaten.");
-            Thread.Sleep(1500);
+            //Thread.Sleep(1500);
             Console.WriteLine("\nTo avoid the attack and destroy the plant you will \nhave to press a certain key as fast as you can!");
-            Thread.Sleep(2000);
+            //Thread.Sleep(2000);
             Console.WriteLine("\nPress any key to start when you are ready!");
             Reaction.Wait();
         }
@@ -97,8 +97,8 @@ namespace FantasyIsland
             {
                 Console.Clear();
                 Console.SetCursorPosition(35,0);
-                Console.WriteLine("HEALTH {0}", this.hero.PlayerStats.Stamina);
-                if (this.hero.PlayerStats.Stamina <= 0)
+                Console.WriteLine("HEALTH {0}", this.Hero.PlayerStats.Stamina);
+                if (this.Hero.PlayerStats.Stamina <= 0)
                 {
                     Console.WriteLine("Too much damage taken! You are dead!");
                     break;
@@ -114,24 +114,23 @@ namespace FantasyIsland
                     DoubleAttack();
                 }
             }
-            LevelFinished();
         }
 
         protected override void LevelFinished()
         {
-            if (this.hero.PlayerStats.Stamina > 0)
+            if (this.Hero.PlayerStats.Stamina > 0)
             {
                 Console.Clear();
                 Console.WriteLine("Congratulations! You passed the dark forest.");
-                Thread.Sleep(2000);
+                //Thread.Sleep(2000);
                 Console.WriteLine("You reached a magic healing plant. Your health is back to it's initial level");
-                Thread.Sleep(2000);
+                //Thread.Sleep(2000);
                 Console.WriteLine("You can take some magic leafs from the plant with you");
-                Thread.Sleep(2000);
+                ///Thread.Sleep(2000);
                 Console.WriteLine("That will increase your health level, but the plant has a very strong scent.");
-                Thread.Sleep(1000);
+                //Thread.Sleep(1000);
                 Console.WriteLine("It causes dizzyness and decreases your agility level.");
-                Thread.Sleep(2000);
+                //Thread.Sleep(2000);
                 Console.WriteLine("Would you like to take the magic leafs with you? ");
                 Console.WriteLine("Press Spacebar for Yes or Escape for No ...");
                 bool decision = Reaction.CheckKey(ConsoleKey.Spacebar, ConsoleKey.Escape);
@@ -139,8 +138,8 @@ namespace FantasyIsland
                 {
                     int increaseHealthValue = rand.Next(20, 31);
                     int decreaseAgilityValue = rand.Next(20, 31);
-                    this.hero.IncreaseHealth(increaseHealthValue);
-                    this.hero.DecreaseAgility(decreaseAgilityValue);
+                    this.Hero.IncreaseHealth(increaseHealthValue);
+                    this.Hero.DecreaseAgility(decreaseAgilityValue);
                     Console.WriteLine("+ {0} Health", increaseHealthValue);
                     Console.WriteLine("- {0} Agility", decreaseAgilityValue);
                 }
@@ -148,6 +147,7 @@ namespace FantasyIsland
             else
             {
                 //TODO: Game Over
+                Console.WriteLine("Game Over!!!");
             }
         }
 
@@ -159,6 +159,7 @@ namespace FantasyIsland
             Console.WriteLine("ATTACKED !!! \nPRESS \"{0}\" TO COUNTER-ATTACK!!!", keyToPress);
             Console.ForegroundColor = ConsoleColor.Gray;
             long reaction = Reaction.MeasureReaction(keyToPress);
+            ReactionResult(reaction);
             if (rand.Next(1, 11) < 3)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -167,7 +168,6 @@ namespace FantasyIsland
                 Thread.Sleep(1500);
                 Attack();
             }
-            ReactionResult(reaction);
         }
 
         private void DoubleAttack()
@@ -210,7 +210,7 @@ namespace FantasyIsland
             else if (reaction >= this.fastReaction * timeChangeCoefficient
                 && reaction < this.averageReaction * timeChangeCoefficient)
             {
-                this.hero.LooseHealth(bitePower);
+                this.Hero.LooseHealth(bitePower);
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("SMALL BITE! -{0} HEALTH!", bitePower);
                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -219,7 +219,7 @@ namespace FantasyIsland
             else if (reaction >= this.averageReaction * timeChangeCoefficient
                 && reaction < this.slowReaction * timeChangeCoefficient)
             {
-                this.hero.LooseHealth(bitePower * 2);
+                this.Hero.LooseHealth(bitePower * 2);
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("BIG BITE! -{0} HEALT!", bitePower * 2);
                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -230,7 +230,7 @@ namespace FantasyIsland
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("TOO SLOW! YOU'RE DEAD!");
                 Console.ForegroundColor = ConsoleColor.Gray;
-                this.hero.LooseHealth(0);
+                this.Hero.LooseHealth(0);
             }
         }
         #endregion
