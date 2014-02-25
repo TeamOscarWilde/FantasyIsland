@@ -19,7 +19,8 @@ namespace FantasyIsland
         #endregion
 
         #region Constructors
-        public DemonVaultLevel(Difficulty difficulty) : base(difficulty)
+        public DemonVaultLevel(Difficulty difficulty)
+            : base(difficulty)
         {
             if (difficulty == FantasyIsland.Difficulty.Easy) //affects the damage 
             {
@@ -34,7 +35,7 @@ namespace FantasyIsland
                 // to do + 20% damage dealt by flying demons
             }
 
-            this.enemy = new Enemy(PlayerStats.FlyingDemon, Armor.None, Weapon.None, Magic.HighDrop); 
+            this.enemy = new Enemy(PlayerStats.FlyingDemon, Armor.None, Weapon.None, Magic.HighDrop);
         }
         #endregion
 
