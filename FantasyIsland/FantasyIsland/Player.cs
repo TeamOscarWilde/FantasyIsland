@@ -83,10 +83,16 @@ namespace FantasyIsland
         #endregion
 
         #region Methods
+        public void IncreaseAgility(int amount)
+        {
+            this.playerStats.IncreaseAgility(amount);
+        }
+
         public void DecreaseAgility(int amount)
         {
             this.playerStats.DecreaseAgility(amount);
         }
+
         public void LooseHealth(int amount)
         {
             this.playerStats.LooseHealth(amount);

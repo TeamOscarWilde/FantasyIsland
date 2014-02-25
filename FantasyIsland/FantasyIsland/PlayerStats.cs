@@ -8,6 +8,10 @@ namespace FantasyIsland
 
     public class PlayerStats : Stats
     {
+        #region Constants
+        private readonly int InitialHealth;
+        #endregion
+
         #region Static Fields
         private static PlayerStats elf;
         private static PlayerStats human;
@@ -44,6 +48,7 @@ namespace FantasyIsland
         {
             this.Stamina = stamina;
             this.Agility = agility;
+            this.InitialHealth = stamina;
         }
         #endregion
 
@@ -152,14 +157,23 @@ namespace FantasyIsland
         #region Methods
         public decimal CalculateAgilityPercentage()
         {
-            decimal result = this.agility / 100m;
+            decimal result = this.Agility / 100m;
 
             return result;
         }
 
+        public void IncreaseAgility(int amount)
+        {
+            if (amount < 0)
+            {
+                throw new ArgumentException("Amount to increase Agility cannot be negative!");
+            }
+            this.Agility += amount;
+        }
+
         public void DecreaseAgility(int amount)
         {
-            if (amount == 0 || this.Stamina - amount < 0)
+            if (this.Agility - amount < 0)
             {
                 this.Agility = 0;
             }
@@ -176,7 +190,7 @@ namespace FantasyIsland
 
         public void LooseHealth(int amount)
         {
-            if (amount == 0 || this.Stamina - amount < 0)
+            if (this.Stamina - amount <= 0)
             {
                 this.Stamina = 0;
             }
@@ -188,7 +202,7 @@ namespace FantasyIsland
 
         public void ResetHealth()
         {
-            this.Stamina = 40;
+            this.Stamina = this.InitialHealth;
         }
 
         public void AddToAttack(int amount)
