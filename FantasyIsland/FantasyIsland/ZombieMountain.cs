@@ -2,6 +2,7 @@
 {
     using System;
     using System.Threading;
+    using System.IO;
 
     public class ZombieMountain : Level
     {
@@ -78,21 +79,10 @@
         protected override void Intro()
         {
             Console.CursorVisible = false;
-            Console.WriteLine("You have entered the ZOMBIE MOUNTAIN!");
-            Thread.Sleep(1500);
-            Console.WriteLine("\nThis mountain is filled with zombies!");
-            Thread.Sleep(1500);
-            Console.WriteLine("\nThey are blind but really dangerous. ");
-            Thread.Sleep(1500);
-            Console.WriteLine("\nThey can feel your scent and come after you!");
-            Thread.Sleep(1500);
-            Console.WriteLine("\nYou have to move fast and attack swiftly!");
-            Thread.Sleep(1500);
-            Console.WriteLine("\nThe more agility you have the less damage the zombies \nwill do to you or even miss you!");
-            Thread.Sleep(1500);
-            Console.WriteLine("\nTo avoid the attack and destroy the zombie you will \nhave to press a certain key as fast as you can!");
-            Thread.Sleep(2000);
-            Console.WriteLine("\nPress any key to start when you are ready!");
+            using (StreamReader sr = new StreamReader(@"..\..\Text\ZombieMountainIntro.txt"))
+            {
+                sr.ReadAndType();
+            }
             Reaction.Wait();
         }
 
@@ -200,36 +190,27 @@
         }
         protected override void LevelFinished()
         {
-            string crossbowChoice;
+            bool crossbowChoice;
             if (this.Hero.PlayerStats.Stamina > 0)
             {
                 Console.Clear();
-                Console.WriteLine("It seems like that was the last of them.");
+                using (StreamReader sr = new StreamReader(@"..\..\Text\ZombieMountainFinished.txt"))
+                {
+                    sr.ReadAndType();
+                }
             }
-            Thread.Sleep(2500);
-            Console.WriteLine("\nYou have found your old friend John's corpse.");
-            Thread.Sleep(1500);
-            Console.WriteLine("\nGuess he wasn't that lucky with the zombies...");
-            Thread.Sleep(1500);
-            Console.WriteLine("\nYOU HAVE FOUND HIS LEGENDARY CROSSBOW!\nIt might come in handy!!! Would you like to pick it up? YES or NO?");
-            crossbowChoice = Console.ReadLine().ToUpper();
+            crossbowChoice = Reaction.CheckKey(ConsoleKey.Spacebar, ConsoleKey.Escape);
 
-            if ((crossbowChoice.CompareTo("YES") == 0))
+            if (crossbowChoice)
             {
                 Thread.Sleep(1500);
                 Console.WriteLine("\nPicking up the item!");
                 this.Hero.Weapon = Weapon.CrossBow;
             }
-            else if ((crossbowChoice.CompareTo("NO") == 0))
+            else 
             {
                 Thread.Sleep(1500);
                 Console.WriteLine("\nOKAY! I did say it will come in handy though!");
-            }
-            else
-            {
-                Thread.Sleep(1500);
-                Console.WriteLine("\nInvalid input. Picking up the item.");
-                this.Hero.Weapon = Weapon.CrossBow;
             }
             Thread.Sleep(1500);
             Console.ForegroundColor = ConsoleColor.Green;

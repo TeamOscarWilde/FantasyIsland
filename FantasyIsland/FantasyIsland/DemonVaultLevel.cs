@@ -7,6 +7,7 @@ namespace FantasyIsland
 {
     using System;
     using System.Threading;
+    using System.IO;
 
     public class DemonVaultLevel : Level
     {
@@ -32,17 +33,10 @@ namespace FantasyIsland
         #region Methods
         protected override void Intro()
         {
-            Console.WriteLine("You entered the FLYING DEMONS' vault!");
-            Thread.Sleep(1500);
-            Console.WriteLine("\nThis is dark place with strange noices and you better be careful.");
-            Thread.Sleep(1500);
-            Console.WriteLine("Demons will try to catch you and throw you in some\ndirection in order to hurt and kill you");
-            Thread.Sleep(2000);
-            Console.WriteLine("Shooting weapons will be your best defence.");
-            Thread.Sleep(1500);
-            Console.WriteLine("Get ready for the battle!");
-            Thread.Sleep(1500);
-            Console.WriteLine("\nPress any key to start when you are ready!");
+            using (StreamReader sr = new StreamReader(@"..\..\Text\DemonVaultIntro.txt"))
+            {
+                sr.ReadAndType();
+            }
             Reaction.Wait();
         }
 
@@ -50,12 +44,11 @@ namespace FantasyIsland
         {
             Console.CursorVisible = false;
             Console.Clear();
-            this.Intro(); //UNCOMMENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            this.Intro();
             int totalRounds = rand.Next(MinNumberOfFlyingDemons, MaxNumberOfFlyingDemons + 1);
 
             for (int round = 0; round < totalRounds; round++)
             {
-                //Console.WriteLine(Damage(false)); //for testing
                 this.Battle();
             }
 
@@ -66,16 +59,12 @@ namespace FantasyIsland
         {
             Console.Clear();
             this.ChangeConsoleColor(ConsoleColor.Yellow);
-            Console.WriteLine(this.Hero.PlayerStats.Agility);
-            Console.WriteLine(this.Hero.TotalStats.Agility);
-
-            Console.WriteLine("You successfully passed the Demon Vault!");
-            Console.WriteLine("Fortunately you found a health shrine and you\ncan refill you health for the next battle!");
-            this.Hero.ResetHealth();
-            Console.WriteLine("It looks like a miracle, but you take the wings\nfrom demon and now you can fly!");
-            Console.WriteLine("As a result your Agility(speed) increases twice!");
+            using (StreamReader sr = new StreamReader(@"..\..\Text\DemonVaultFinished.txt"))
+            {
+                sr.ReadAndType();
+            }
             Hero.IncreaseAgility(this.Hero.PlayerStats.Agility); //this will double the hero agility
-            Console.WriteLine(this.Hero.PlayerStats.Agility);
+            Console.WriteLine(this.Hero.PlayerStats.Agility); // To FIX AGILITY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             Console.WriteLine(this.Hero.TotalStats.Agility);
             this.ChangeConsoleColor(ConsoleColor.White);
             Reaction.Wait();
@@ -138,7 +127,7 @@ namespace FantasyIsland
                         Console.WriteLine("You are so fast and the demon cannot see you anymore.\nBut be careful there are many demons around!");
                         Reaction.Wait();
                         break;
-                    }
+                }
                     else
                     {
                         ChangeConsoleColor(ConsoleColor.Yellow);
@@ -168,10 +157,10 @@ namespace FantasyIsland
                 }
                 DemonAttack();
             }
-
+                
             Console.Clear();
-        }
-
+            }
+            
         private void DemonAttack()
         {
             ChangeConsoleColor(ConsoleColor.Red);
@@ -213,7 +202,7 @@ namespace FantasyIsland
             damage = this.Damage(true);
             this.enemyDemon.LooseHealth(damage);
             Console.WriteLine("Damage dealt to demon is {0}", damage);
-        }
+            }
 
         private int Damage(bool isHero)
         {
@@ -228,7 +217,7 @@ namespace FantasyIsland
                 accuracy = this.Hero.TotalStats.Accuracy;
                 agility = (double)this.Hero.TotalStats.Agility / 100;
                 opponentDefence = this.enemyDemon.TotalStats.Defence;
-            }
+        }
             else
             {
                 attackPower = this.enemyDemon.TotalStats.AttackPower;
@@ -238,7 +227,7 @@ namespace FantasyIsland
                     attackPower += attackPower / 4; //adds 25% more damage
                 }
                 else if (this.Difficulty == FantasyIsland.Difficulty.Hard)
-                {
+        {
                     attackPower += attackPower / 2; //adds 50% more damage
                 }
 

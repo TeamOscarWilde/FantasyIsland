@@ -1,0 +1,7 @@
+Congratulations! You passed the dark forest.
+You reached a magic healing plant. Your health is back to it's initial level.
+You can take some magic leafs from the plant with you
+That will increase your health level, but the plant has a very strong scent.
+It causes dizzyness and decreases your agility level.
+Would you like to take the magic leafs with you? 
+Press Spacebar for Yes or Escape for No ...
