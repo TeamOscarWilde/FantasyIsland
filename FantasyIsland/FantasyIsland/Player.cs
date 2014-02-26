@@ -60,7 +60,7 @@ namespace FantasyIsland
             get
             {
                 return new Weapon(this.weapon.WeaponStats.AttackPower, this.weapon.WeaponStats.Accuracy,
-                    this.weapon.WeaponStats.Defence);
+                    this.weapon.WeaponStats.Defence, this.weapon.WeaponType);
             }
             set
             {

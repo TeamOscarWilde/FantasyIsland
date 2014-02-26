@@ -61,6 +61,7 @@
     <Compile Include="Stats.cs" />
     <Compile Include="SuperPower.cs" />
     <Compile Include="Weapon.cs" />
+    <Compile Include="WeaponType.cs" />
     <Compile Include="ZombieMountain.cs" />
   </ItemGroup>
   <ItemGroup>
