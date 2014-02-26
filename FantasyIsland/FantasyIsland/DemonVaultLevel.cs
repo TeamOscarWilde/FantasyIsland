@@ -76,6 +76,8 @@ namespace FantasyIsland
         {
             int randomNumber = this.rand.Next(101);
             this.enemyDemon.ResetHealth();
+            //To check what kind of weapon the hero has??? !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            bool isLongRangeWeapon = false;
 
             if (randomNumber % 6 == 0) //demon has 16% chance to surprise you with HighDrop
             {
@@ -126,7 +128,7 @@ namespace FantasyIsland
                         Console.WriteLine("You are so fast and the demon cannot see you anymore.\nBut be careful there are many demons around!");
                         Reaction.Wait();
                         break;
-                    }
+                }
                     else
                     {
                         ChangeConsoleColor(ConsoleColor.Yellow);
@@ -136,11 +138,11 @@ namespace FantasyIsland
                     }
                 }
 
-                if (this.Hero.Weapon.WeaponType == WeaponType.LongRange) //the hero can shoot at the demon
+                if (isLongRangeWeapon) //the hero can shoot at the demon
                 {
                     this.BattleWithLongRangeWeapon();
                 }
-                else //(this.Hero.Weapon.WeaponType == WeaponType.Hand) //hero has hand weapon
+                else //hero has hand weapon
                 {
                     this.BattleWithHandWeapon();
                 }
@@ -156,10 +158,10 @@ namespace FantasyIsland
                 }
                 this.DemonAttack();
             }
-
+                
             Console.Clear();
-        }
-
+            }
+            
         private void DemonAttack()
         {
             ChangeConsoleColor(ConsoleColor.Red);
@@ -201,7 +203,7 @@ namespace FantasyIsland
             damage = this.Damage(true);
             this.enemyDemon.LooseHealth(damage);
             Console.WriteLine("Damage dealt to demon is {0}", damage);
-        }
+            }
 
         private int Damage(bool isHero)
         {
@@ -216,7 +218,7 @@ namespace FantasyIsland
                 accuracy = this.Hero.TotalStats.Accuracy;
                 agility = (double)this.Hero.TotalStats.Agility / 100;
                 opponentDefence = this.enemyDemon.TotalStats.Defence;
-            }
+        }
             else
             {
                 attackPower = this.enemyDemon.TotalStats.AttackPower;
@@ -226,7 +228,7 @@ namespace FantasyIsland
                     attackPower += attackPower / 4; //adds 25% more damage
                 }
                 else if (this.Difficulty == FantasyIsland.Difficulty.Hard)
-                {
+        {
                     attackPower += attackPower / 2; //adds 50% more damage
                 }
 
