@@ -79,8 +79,6 @@ namespace FantasyIsland.Levels
         {
             int randomNumber = this.rand.Next(101);
             this.enemyDemon.ResetHealth();
-            //To check what kind of weapon the hero has??? !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            bool isLongRangeWeapon = false;
 
             if (randomNumber % 6 == 0) //demon has 16% chance to surprise you with HighDrop
             {
@@ -131,7 +129,7 @@ namespace FantasyIsland.Levels
                         Console.WriteLine("You are so fast and the demon cannot see you anymore.\nBut be careful there are many demons around!");
                         Reaction.Wait();
                         break;
-                }
+                    }
                     else
                     {
                         ChangeConsoleColor(ConsoleColor.Yellow);
@@ -141,11 +139,11 @@ namespace FantasyIsland.Levels
                     }
                 }
 
-                if (isLongRangeWeapon) //the hero can shoot at the demon
+                if (this.Hero.Weapon.WeaponType == WeaponType.LongRange) //the hero can shoot at the demon
                 {
                     this.BattleWithLongRangeWeapon();
                 }
-                else //hero has hand weapon
+                else //(this.Hero.Weapon.WeaponType == WeaponType.Hand) //hero has hand weapon
                 {
                     this.BattleWithHandWeapon();
                 }
@@ -161,10 +159,10 @@ namespace FantasyIsland.Levels
                 }
                 this.DemonAttack();
             }
-                
+
             Console.Clear();
-            }
-            
+        }
+
         private void DemonAttack()
         {
             ChangeConsoleColor(ConsoleColor.Red);
@@ -177,7 +175,7 @@ namespace FantasyIsland.Levels
         {
             this.ChangeConsoleColor(ConsoleColor.White);
             Console.WriteLine("The demon is flying against you, but you can\nonly prepare to hit him until he is close enough!");
-            if (rand.Next(101) < 80) //80% chance to hit demon, if depends on the Agility - makes game too unfair 
+            if (rand.Next(101) < 80) //80% chance to hit demon, if depends on the Agility - makes game too unfair
             {
                 ChangeConsoleColor(ConsoleColor.Green);
                 damage = this.Damage(true);
@@ -206,7 +204,7 @@ namespace FantasyIsland.Levels
             damage = this.Damage(true);
             this.enemyDemon.LooseHealth(damage);
             Console.WriteLine("Damage dealt to demon is {0}", damage);
-            }
+        }
 
         private int Damage(bool isHero)
         {
@@ -221,7 +219,7 @@ namespace FantasyIsland.Levels
                 accuracy = this.Hero.TotalStats.Accuracy;
                 agility = (double)this.Hero.TotalStats.Agility / 100;
                 opponentDefence = this.enemyDemon.TotalStats.Defence;
-        }
+            }
             else
             {
                 attackPower = this.enemyDemon.TotalStats.AttackPower;
@@ -231,7 +229,7 @@ namespace FantasyIsland.Levels
                     attackPower += attackPower / 4; //adds 25% more damage
                 }
                 else if (this.Difficulty == Difficulty.Hard)
-        {
+                {
                     attackPower += attackPower / 2; //adds 50% more damage
                 }
 

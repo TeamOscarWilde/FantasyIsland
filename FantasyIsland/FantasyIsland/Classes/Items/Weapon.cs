@@ -20,22 +20,23 @@
         #region Static Constructors
         static Weapon()
         {
-            none = new Weapon(0, 0, 0, 0, 0);
-            bow = new Weapon(30, 40, 0, 5, 5);
-            crossBow = new Weapon(35, 50, 0, 10, 8);
-            flamethrower = new Weapon(35, 30, 0, 20, 15);
-            axe = new Weapon(35, 25, 6, 20, 25);
-            hammer = new Weapon(45, 10, 0, 30, 30);
-            sword = new Weapon(30, 30, 15, 15, 25);
-            dagger = new Weapon(25, 35, 12, 5, 15);
+            none = new Weapon(0, 0, 0, 0, 0, WeaponType.Hand);
+            bow = new Weapon(30, 40, 0, 5, 5, WeaponType.LongRange);
+            crossBow = new Weapon(35, 50, 0, 10, 8, WeaponType.LongRange);
+            flamethrower = new Weapon(35, 30, 0, 20, 15, WeaponType.LongRange);
+            axe = new Weapon(35, 25, 6, 20, 25, WeaponType.Hand);
+            hammer = new Weapon(45, 10, 0, 30, 30, WeaponType.Hand);
+            sword = new Weapon(30, 30, 15, 15, 25, WeaponType.Hand);
+            dagger = new Weapon(25, 35, 12, 5, 15, WeaponType.Hand);
         }
         #endregion
 
         #region Constructors
-        public Weapon(int attackPower, int accuracy, int defence, int weight, int strength)
+        public Weapon(int attackPower, int accuracy, int defence, int weight, int strength, WeaponType weaponType)
             : base(weight, strength)
         {
             this.WeaponStats = new Stats(attackPower, accuracy, defence);
+            this.WeaponType = weaponType;
         }
         #endregion
 
@@ -117,6 +118,8 @@
                 this.weaponStats = value;
             }
         }
+
+        public WeaponType WeaponType { get; private set; }
         #endregion
     }
 }

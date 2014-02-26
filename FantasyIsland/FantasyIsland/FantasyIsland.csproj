@@ -52,6 +52,7 @@
     <Compile Include="Classes\Items\HandWeapon.cs" />
     <Compile Include="Classes\Items\RangeWeapon.cs" />
     <Compile Include="Classes\Items\Sword.cs" />
+    <Compile Include="Enumerations\WeaponType.cs" />
     <Compile Include="Interfaces\IItem.cs" />
     <Compile Include="Classes\Items\Item.cs" />
     <Compile Include="Levels\DarkForestLevel.cs" />
