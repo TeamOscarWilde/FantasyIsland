@@ -1,0 +1,4 @@
+		A letter will appear on the screen
+		the faster you press the keyboard key
+		corresponding to the letter the better
+		chance you have to defeat the evil!!!

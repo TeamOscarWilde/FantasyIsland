@@ -80,7 +80,7 @@ class StartScreen
         }
 
         #endregion PRESS ANY KEY
-
+        Console.CursorVisible = false;
         Console.ReadKey(true);
     }
 }
