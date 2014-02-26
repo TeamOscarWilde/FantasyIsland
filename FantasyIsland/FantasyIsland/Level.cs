@@ -7,7 +7,10 @@ namespace FantasyIsland
 {
     using System;
 
-    public abstract class Level
+    using FantasyIsland.Enumerations;
+    using FantasyIsland.Interfaces;
+
+    public abstract class Level : ILevel
     {
         #region Fields
         private Enemy enemy;

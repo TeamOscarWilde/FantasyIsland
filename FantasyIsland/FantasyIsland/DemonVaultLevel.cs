@@ -9,6 +9,8 @@ namespace FantasyIsland
     using System.Threading;
     using System.IO;
 
+    using FantasyIsland.Enumerations;
+
     public class DemonVaultLevel : Level
     {
         #region Constants
@@ -223,11 +225,11 @@ namespace FantasyIsland
             {
                 attackPower = this.enemyDemon.TotalStats.AttackPower;
 
-                if (this.Difficulty == FantasyIsland.Difficulty.Medium)
+                if (this.Difficulty == Difficulty.Medium)
                 {
                     attackPower += attackPower / 4; //adds 25% more damage
                 }
-                else if (this.Difficulty == FantasyIsland.Difficulty.Hard)
+                else if (this.Difficulty == Difficulty.Hard)
         {
                     attackPower += attackPower / 2; //adds 50% more damage
                 }

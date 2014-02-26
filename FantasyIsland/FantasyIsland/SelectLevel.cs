@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading;
-namespace FantasyIsland
+﻿namespace FantasyIsland
 {
+    using System;
+    using System.IO;
+
+    using FantasyIsland.Enumerations;
+
     class SelectLevel
     {
         private static string logo = File.ReadAllText(@"..\..\Text\logo.txt");

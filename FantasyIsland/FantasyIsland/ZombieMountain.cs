@@ -4,6 +4,8 @@
     using System.Threading;
     using System.IO;
 
+    using FantasyIsland.Enumerations;
+
     public class ZombieMountain : Level
     {
         #region Constants
@@ -37,14 +39,14 @@
         public ZombieMountain(Difficulty difficulty, Hero hero)
             : base(difficulty, hero)
         {
-            if (difficulty == FantasyIsland.Difficulty.Easy)
+            if (difficulty == Difficulty.Easy)
             {
                 this.initialHitPercentage = 70;
                 this.fastReaction = (int)ReactionTime.Normal;
                 this.averageReaction = (int)ReactionTime.Slow;
                 this.slowReaction = (int)ReactionTime.UltraSlow;
             }
-            else if (difficulty == FantasyIsland.Difficulty.Medium)
+            else if (difficulty == Difficulty.Medium)
             {
                 this.initialHitPercentage = 60;
                 this.fastReaction = (int)ReactionTime.Fast;

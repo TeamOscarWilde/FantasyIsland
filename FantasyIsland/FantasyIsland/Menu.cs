@@ -31,7 +31,7 @@ namespace FantasyIsland
             WriteColorString(" ", 0, 20, ConsoleColor.Black, ConsoleColor.White);
             if (choices[choice - 1] == "Start")
             {
-                FantasyIsland.Story.GameStory();
+                Story.GameStory();
                 SelectLevel.ShowMenu();
 
             }

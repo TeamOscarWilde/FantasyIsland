@@ -16,6 +16,8 @@ namespace FantasyIsland
     using System.Threading;
     using System.IO;
 
+    using FantasyIsland.Enumerations;
+
     public class DarkForestLevel : Level
     {
         #region Constants
@@ -47,13 +49,13 @@ namespace FantasyIsland
             this.bitePower = (int)(enemy.PlayerStats.AttackPower * this.Hero.PlayerStats.CalculateDefencePercentage());
             this.agilityEffect = this.Hero.PlayerStats.CalculateAgilityPercentage();
 
-            if (difficulty == FantasyIsland.Difficulty.Easy)
+            if (difficulty == Difficulty.Easy)
             {
                 this.fastReaction = (int)ReactionTime.Normal * this.agilityEffect;
                 this.averageReaction = (int)ReactionTime.Slow * this.agilityEffect;
                 this.slowReaction = (int)ReactionTime.UltraSlow * this.agilityEffect;
             }
-            else if (difficulty == FantasyIsland.Difficulty.Medium)
+            else if (difficulty == Difficulty.Medium)
             {
                 this.fastReaction = (int)ReactionTime.Fast * this.agilityEffect;
                 this.averageReaction = (int)ReactionTime.Normal * this.agilityEffect;

@@ -4,7 +4,9 @@
 
 namespace FantasyIsland
 {
-    public class Player
+    using FantasyIsland.Interfaces;
+
+    public class Player : IPlayer
     {
         #region Fields
         private PlayerStats playerStats;
