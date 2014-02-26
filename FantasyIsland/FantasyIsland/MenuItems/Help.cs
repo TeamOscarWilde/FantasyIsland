@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace FantasyIsland
+namespace FantasyIsland.MenuItems
 {
     class Help
     {

@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FantasyIsland.Characters.Dwarf" Collapsed="true">
+    <Position X="3" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Characters\Dwarf.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.Characters.Elf" Collapsed="true">
+    <Position X="5.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Characters\Elf.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.Characters.Enemy" Collapsed="true">
+    <Position X="0.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Characters\Enemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.Characters.Hero" Collapsed="true">
+    <Position X="5.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Characters\Hero.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.Characters.HeroFactory" Collapsed="true">
+    <Position X="24.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAIAAQAAAA=</HashCode>
+      <FileName>Characters\HeroFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.Characters.Human" Collapsed="true">
+    <Position X="7.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Characters\Human.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.Characters.Player" Collapsed="true">
+    <Position X="4" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAQAAIAAAIAAAAAAAAAACABQAAgAFIAAABAAEAQ=</HashCode>
+      <FileName>Characters\Player.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="FantasyIsland.Extensions" Collapsed="true">
+    <Position X="19.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAACAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Extensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.InvalidHeroException" Collapsed="true">
+    <Position X="19.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\InvalidHeroException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.Armor" Collapsed="true">
+    <Position X="1.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQUAAAAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAAAEFAAA=</HashCode>
+      <FileName>Classes\Items\Armor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.Item" Collapsed="true">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACBAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Items\Item.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="FantasyIsland.Weapon" Collapsed="true">
+    <Position X="10.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAgCAAAAAAAAAQAAAAkAgAAIAIAAAgAgAEIAIEBIAg=</HashCode>
+      <FileName>Classes\Items\Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.PlayerStats" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAQAAgAlIAEAIQJBAAACQAAAAhQAAAACIIIAQQAGAA=</HashCode>
+      <FileName>Classes\PlayerStats.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.Reaction" Collapsed="true">
+    <Position X="23" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAgAAAAAAAAAAAQgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Reaction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.Stats" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAggAAAAICAAAAAAAAAAAAAAACgAAAAI=</HashCode>
+      <FileName>Classes\Stats.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.Game" Collapsed="true">
+    <Position X="21.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Game.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.Classes.Items.Axe" Collapsed="true">
+    <Position X="8" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Items\Axe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.Classes.Items.Bow" Collapsed="true">
+    <Position X="17" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Items\Bow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.Classes.Items.CrossBow" Collapsed="true">
+    <Position X="12.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Items\CrossBow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.Classes.Items.Dagger" Collapsed="true">
+    <Position X="3.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Items\Dagger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.Classes.Items.Flamethrower" Collapsed="true">
+    <Position X="14.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Items\FlameThrower.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.Classes.Items.Hammer" Collapsed="true">
+    <Position X="5.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Items\Hammer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.Classes.Items.HandWeapon" Collapsed="true">
+    <Position X="6.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Items\HandWeapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.Classes.Items.RangeWeapon" Collapsed="true">
+    <Position X="14.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Items\RangeWeapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.Classes.Items.Sword" Collapsed="true">
+    <Position X="10.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Items\Sword.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.Levels.DarkForestLevel" Collapsed="true">
+    <Position X="3" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CEAAEIAAADAAAYAAAgQADAAAAIAAAAQiAAAAAAAgAII=</HashCode>
+      <FileName>Levels\DarkForestLevel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.Levels.DemonVaultLevel" Collapsed="true">
+    <Position X="5.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EEEAAJCAADAAwAAAAIAACAAAAAAAAAQAAAAAAAIAAAA=</HashCode>
+      <FileName>Levels\DemonVaultLevel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.Levels.Level" Collapsed="true">
+    <Position X="3" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAgAAADAAAQBAAAAACAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Levels\Level.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="FantasyIsland.Levels.ZombieMountain" Collapsed="true">
+    <Position X="0.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAFIQAADAAAIAAAgQADAAAAAAIAAAAAABAAAAgAMI=</HashCode>
+      <FileName>Levels\ZombieMountain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.MenuItems.Help" Collapsed="true">
+    <Position X="23" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>MenuItems\Help.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.MenuItems.Menu" Collapsed="true">
+    <Position X="21.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAEAAADABAAAAAAAAAAAAAAAAAgAAEQBAAA=</HashCode>
+      <FileName>MenuItems\Menu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.MenuItems.SelectHeroMenu" Collapsed="true">
+    <Position X="24.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAEAAADABAAAAAAAAAAAAAAAAAgAAEQBAAA=</HashCode>
+      <FileName>MenuItems\SelectHeroMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.MenuItems.SelectLevel" Collapsed="true">
+    <Position X="19.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAEAAADABAAAAAAAAAAAAAAAAAgAAEQBAAA=</HashCode>
+      <FileName>MenuItems\SelectLevel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.MenuItems.StartScreen" Collapsed="true">
+    <Position X="21.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAEAAAAABAAAAAAAAAEAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>MenuItems\StartScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyIsland.MenuItems.Story" Collapsed="true">
+    <Position X="23" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MenuItems\Story.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="FantasyIsland.Interfaces.IItem" Collapsed="true">
+    <Position X="19.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACBAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IItem.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FantasyIsland.Interfaces.ILevel" Collapsed="true">
+    <Position X="21.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAACAAAQBAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ILevel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FantasyIsland.Interfaces.IPlayer" Collapsed="true">
+    <Position X="23" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAIAAAAAAAAAAAABQAAgAFIAAAAAAEAQ=</HashCode>
+      <FileName>Interfaces\IPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="FantasyIsland.Magic" Collapsed="true">
+    <Position X="21.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAEAACAAAAAAAAAAAAEAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Enumerations\Magic.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="FantasyIsland.ReactionTime" Collapsed="true">
+    <Position X="23" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAIAAAIBAAAAAAAAAAABAA=</HashCode>
+      <FileName>Enumerations\ReactionTime.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="FantasyIsland.SuperPower" Collapsed="true">
+    <Position X="24.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQCAAAAAAAAAAAAAAAAAAAABAAAAAAE=</HashCode>
+      <FileName>Enumerations\SuperPower.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="FantasyIsland.Enumerations.Difficulty" Collapsed="true">
+    <Position X="19.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkAAA=</HashCode>
+      <FileName>Enumerations\Difficulty.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

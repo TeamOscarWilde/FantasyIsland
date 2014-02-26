@@ -1,11 +1,9 @@
-﻿namespace FantasyIsland
+﻿namespace FantasyIsland.MenuItems
 {
     using System;
     using System.IO;
 
-    using FantasyIsland.Enumerations;
-
-    class SelectLevel
+    class Menu
     {
         private static string logo = File.ReadAllText(@"..\..\Text\logo.txt");
         public static void SetScreen()
@@ -24,31 +22,24 @@
 
 
             Console.WriteLine(logo);
-            string[] choices = { "Dark Forest", "Deamon Vault", "Zombie Mountain", "THE DRAGON" };
+            string[] choices = { "Start", "Help" };
             WriteColorString("Choose using down and up arrow keys and press enter", 10, 17, ConsoleColor.Black, ConsoleColor.White);
             int choice = ChooseListBoxItem(choices, 30, 10, ConsoleColor.DarkYellow, ConsoleColor.Black);
             // do something with choice
 
             WriteColorString(" ", 0, 20, ConsoleColor.Black, ConsoleColor.White);
-            if (choices[choice - 1] == "Dark Forest")
+            if (choices[choice - 1] == "Start")
             {
-                Hero myHero = new Hero(PlayerStats.Human, Armor.Medium, Weapon.Sword, SuperPower.DoubleAttack);
-                DarkForestLevel forest = new DarkForestLevel(Difficulty.Easy, myHero);
-                forest.Start();
+                Story.GameStory();
+                SelectHeroMenu.ShowMenu();
+              
+            }
+            if (choices[choice - 1] == "Help")
+            {
+                Help.GameHelp();
+                ShowMenu();
+            }
 
-            }
-            if (choices[choice - 1] == "Deamon Vault")
-            {
-                Hero myHero = new Hero(PlayerStats.Human, Armor.Medium, Weapon.Sword, SuperPower.DoubleAttack);
-                DemonVaultLevel vault = new DemonVaultLevel(Difficulty.Easy, myHero);
-                vault.Start();
-            }
-            if (choices[choice - 1] == "Zombie Mountain")
-            {
-                Hero myHero = new Hero(PlayerStats.Human, Armor.Medium, Weapon.Sword, SuperPower.DoubleAttack);
-                ZombieMountain zombie = new ZombieMountain(Difficulty.Easy, myHero);
-                zombie.Start();
-            }
 
             Console.ReadKey();
             CleanUp();

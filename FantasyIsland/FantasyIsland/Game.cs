@@ -2,6 +2,8 @@
 {
     using System;
 
+    using FantasyIsland.MenuItems;
+
     public static class Game
     {
         public static void Main()

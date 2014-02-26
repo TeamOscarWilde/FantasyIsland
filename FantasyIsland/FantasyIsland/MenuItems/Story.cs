@@ -2,7 +2,7 @@
 using System.Threading;
 using System.IO;
 
-namespace FantasyIsland
+namespace FantasyIsland.MenuItems
 {
     class Story
     {

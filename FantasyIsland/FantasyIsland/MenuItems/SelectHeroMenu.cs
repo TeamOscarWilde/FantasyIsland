@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading;
-namespace FantasyIsland
+﻿namespace FantasyIsland.MenuItems
 {
-    class Menu
+    using System;
+    using System.IO;
+
+    using FantasyIsland.Characters;
+
+    class SelectHeroMenu
     {
         private static string logo = File.ReadAllText(@"..\..\Text\logo.txt");
         public static void SetScreen()
@@ -23,25 +24,16 @@ namespace FantasyIsland
 
 
             Console.WriteLine(logo);
-            string[] choices = { "Start", "Difficulty", "Help" };
+            WriteColorString("Choose Your Hero", 27, 9, ConsoleColor.Black, ConsoleColor.White);
+            string[] choices = { "Human", "Elf", "Dwarf" };
             WriteColorString("Choose using down and up arrow keys and press enter", 10, 17, ConsoleColor.Black, ConsoleColor.White);
             int choice = ChooseListBoxItem(choices, 30, 10, ConsoleColor.DarkYellow, ConsoleColor.Black);
-            // do something with choice
-
             WriteColorString(" ", 0, 20, ConsoleColor.Black, ConsoleColor.White);
-            if (choices[choice - 1] == "Start")
-            {
-                Story.GameStory();
-                SelectLevel.ShowMenu();
 
-            }
-            if (choices[choice - 1] == "Help")
-            {
-                FantasyIsland.Help.GameHelp();
-                ShowMenu();
-            }
+            // design pattern
+            Hero userHero = HeroFactory.MakeHero(choices[choice - 1]);
 
-
+            SelectLevel.ShowMenu(userHero);
             Console.ReadKey();
             CleanUp();
         }
@@ -168,6 +160,5 @@ namespace FantasyIsland
             // exit gracefully if Control-C or Control-Break pressed 
             CleanUp();
         }
-
     }
 }

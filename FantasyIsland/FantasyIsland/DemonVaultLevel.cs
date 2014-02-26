@@ -9,6 +9,7 @@ namespace FantasyIsland
     using System.Threading;
     using System.IO;
 
+    using FantasyIsland.Characters;
     using FantasyIsland.Enumerations;
 
     public class DemonVaultLevel : Level

@@ -10,13 +10,14 @@
  * 20*0.2 = 4 damage. If the hero had 20 defence the damage would have been 20*0.8 = 16
  */
 
-namespace FantasyIsland
+namespace FantasyIsland.Levels
 {
     using System;
     using System.Threading;
     using System.IO;
 
     using FantasyIsland.Enumerations;
+    using FantasyIsland.Characters;
 
     public class DarkForestLevel : Level
     {

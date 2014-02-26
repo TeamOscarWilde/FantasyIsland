@@ -42,38 +42,66 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Armor.cs" />
-    <Compile Include="DarkForestLevel.cs" />
-    <Compile Include="DemonVaultLevel.cs" />
+    <Compile Include="Classes\Items\Armor.cs" />
+    <Compile Include="Classes\Items\Axe.cs" />
+    <Compile Include="Classes\Items\Bow.cs" />
+    <Compile Include="Classes\Items\CrossBow.cs" />
+    <Compile Include="Classes\Items\Dagger.cs" />
+    <Compile Include="Classes\Items\FlameThrower.cs" />
+    <Compile Include="Classes\Items\Hammer.cs" />
+    <Compile Include="Classes\Items\HandWeapon.cs" />
+    <Compile Include="Classes\Items\RangeWeapon.cs" />
+    <Compile Include="Classes\Items\Sword.cs" />
+    <Compile Include="Interfaces\IItem.cs" />
+    <Compile Include="Classes\Items\Item.cs" />
+    <Compile Include="Levels\DarkForestLevel.cs" />
+    <Compile Include="Levels\DemonVaultLevel.cs" />
+    <Compile Include="Characters\Dwarf.cs" />
+    <Compile Include="Characters\Elf.cs" />
     <Compile Include="Enumerations\Difficulty.cs" />
-    <Compile Include="Enemy.cs" />
-    <Compile Include="Extensions.cs" />
+    <Compile Include="Characters\Enemy.cs" />
+    <Compile Include="Classes\Extensions.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="Help.cs" />
-    <Compile Include="Hero.cs" />
+    <Compile Include="MenuItems\Help.cs" />
+    <Compile Include="Characters\Hero.cs" />
+    <Compile Include="Characters\HeroFactory.cs" />
+    <Compile Include="Characters\Human.cs" />
     <Compile Include="Interfaces\ILevel.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
-    <Compile Include="Level.cs" />
+    <Compile Include="Classes\InvalidHeroException.cs" />
+    <Compile Include="Levels\Level.cs" />
     <Compile Include="Enumerations\Magic.cs" />
-    <Compile Include="Menu.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="PlayerStats.cs" />
+    <Compile Include="MenuItems\Menu.cs" />
+    <Compile Include="Characters\Player.cs" />
+    <Compile Include="Classes\PlayerStats.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reaction.cs" />
+    <Compile Include="Classes\Reaction.cs" />
     <Compile Include="Enumerations\ReactionTime.cs" />
-    <Compile Include="SelectLevel.cs" />
-    <Compile Include="StartScreen.cs" />
-    <Compile Include="Stats.cs" />
-    <Compile Include="Story.cs" />
+    <Compile Include="MenuItems\SelectHeroMenu.cs" />
+    <Compile Include="MenuItems\SelectLevel.cs" />
+    <Compile Include="MenuItems\StartScreen.cs" />
+    <Compile Include="Classes\Stats.cs" />
+    <Compile Include="MenuItems\Story.cs" />
     <Compile Include="Enumerations\SuperPower.cs" />
-    <Compile Include="Weapon.cs" />
-    <Compile Include="ZombieMountain.cs" />
+    <Compile Include="Classes\Items\Weapon.cs" />
+    <Compile Include="Levels\ZombieMountain.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Text\" />
+    <Content Include="Text\DarkForestFinished.txt" />
+    <Content Include="Text\DarkForestIntro.txt" />
+    <Content Include="Text\DemonVaultFinished.txt" />
+    <Content Include="Text\DemonVaultIntro.txt" />
+    <Content Include="Text\Help.txt" />
+    <Content Include="Text\Logo.txt" />
+    <Content Include="Text\StartScreen.txt" />
+    <Content Include="Text\Story.txt" />
+    <Content Include="Text\ZombieMountainFinished.txt" />
+    <Content Include="Text\ZombieMountainIntro.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

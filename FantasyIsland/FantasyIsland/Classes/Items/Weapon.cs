@@ -1,6 +1,6 @@
 ﻿namespace FantasyIsland
 {
-    public class Weapon
+    public class Weapon : Item
     {
         #region Static Fields
         private static Weapon none;
@@ -20,19 +20,20 @@
         #region Static Constructors
         static Weapon()
         {
-            none = new Weapon(0, 0, 0);
-            bow = new Weapon(30, 40, 0);
-            crossBow = new Weapon(35, 50, 0);
-            flamethrower = new Weapon(35, 30, 0);
-            axe = new Weapon(35, 25, 6);
-            hammer = new Weapon(45, 10, 0);
-            sword = new Weapon(30, 30, 15);
-            dagger = new Weapon(25, 35, 12);
+            none = new Weapon(0, 0, 0, 0, 0);
+            bow = new Weapon(30, 40, 0, 5, 5);
+            crossBow = new Weapon(35, 50, 0, 10, 8);
+            flamethrower = new Weapon(35, 30, 0, 20, 15);
+            axe = new Weapon(35, 25, 6, 20, 25);
+            hammer = new Weapon(45, 10, 0, 30, 30);
+            sword = new Weapon(30, 30, 15, 15, 25);
+            dagger = new Weapon(25, 35, 12, 5, 15);
         }
         #endregion
 
         #region Constructors
-        public Weapon(int attackPower, int accuracy, int defence)
+        public Weapon(int attackPower, int accuracy, int defence, int weight, int strength)
+            : base(weight, strength)
         {
             this.WeaponStats = new Stats(attackPower, accuracy, defence);
         }

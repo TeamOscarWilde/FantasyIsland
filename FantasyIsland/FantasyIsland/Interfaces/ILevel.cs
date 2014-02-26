@@ -1,5 +1,6 @@
 ﻿namespace FantasyIsland.Interfaces
 {
+    using FantasyIsland.Characters;
     using FantasyIsland.Enumerations;
 
     public interface ILevel

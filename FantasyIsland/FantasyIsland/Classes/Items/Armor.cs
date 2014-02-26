@@ -9,18 +9,13 @@ namespace FantasyIsland
 {
     using System;
 
-    public class Armor
+    public class Armor : Item
     {
         #region Static Fields
         private static Armor none;
         private static Armor light;
         private static Armor medium;
         private static Armor heavy;
-        #endregion
-
-        #region Fields
-        private int weight;
-        private int strength;
         #endregion
 
         #region Static Constructors
@@ -35,9 +30,8 @@ namespace FantasyIsland
 
         #region Constructors
         public Armor(int weight, int strength)
+            : base(weight, strength)
         {
-            this.Weight = weight;
-            this.Strength = strength;
         }
         #endregion
 
@@ -71,42 +65,6 @@ namespace FantasyIsland
             get
             {
                 return heavy;
-            }
-        }
-        #endregion
-
-        #region Properties
-        public int Weight
-        {
-            get
-            {
-                return this.weight;
-            }
-            private set
-            {
-                if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException("The weight of the armor cannot be negative.");
-                }
-
-                this.weight = value;
-            }
-        }
-
-        public int Strength
-        {
-            get
-            {
-                return this.strength;
-            }
-            private set
-            {
-                if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException("The strength of the armor cannot be negative.");
-                }
-
-                this.strength = value;
             }
         }
         #endregion

@@ -3,10 +3,11 @@
  * that level and gives him an option to enter the level or go back and choose another level. 
  * The battle method will contain the action of the level */
 
-namespace FantasyIsland
+namespace FantasyIsland.Levels
 {
     using System;
 
+    using FantasyIsland.Characters;
     using FantasyIsland.Enumerations;
     using FantasyIsland.Interfaces;
 

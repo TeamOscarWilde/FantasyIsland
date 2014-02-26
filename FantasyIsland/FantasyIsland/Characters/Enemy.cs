@@ -1,5 +1,5 @@
 ﻿// For each level the player will have different enemy.
-namespace FantasyIsland
+namespace FantasyIsland.Characters
 {
     public class Enemy : Player
     {
