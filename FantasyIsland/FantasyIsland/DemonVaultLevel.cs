@@ -1,6 +1,7 @@
 ﻿/*
  * This level represents Demons' Vault and the Hero needs to survive. 
  * if hero has a shooting weapon he can easier survive and take less damage by the demons.
+ * Difficulty is used in calculating demon's damage.
 */
 namespace FantasyIsland
 {
@@ -17,25 +18,13 @@ namespace FantasyIsland
         #region Fields
         private Enemy enemyDemon; // to be invoked in parent class Level after changes
         private Random rand = new Random();
+        private int damage;
         #endregion
 
         #region Constructors
         public DemonVaultLevel(Difficulty difficulty, Hero hero)
             : base(difficulty, hero)
         {
-            if (difficulty == FantasyIsland.Difficulty.Easy) //affects the damageDemon 
-            {
-                // to do
-            }
-            else if (difficulty == FantasyIsland.Difficulty.Medium)
-            {
-                // to do + 10% damageDemon dealt by flying demons
-            }
-            else
-            {
-                // to do + 20% damageDemon dealt by flying demons
-            }
-
             this.enemyDemon = new Enemy(PlayerStats.FlyingDemon, Armor.None, Weapon.None, Magic.HighDrop);
         }
         #endregion
@@ -61,11 +50,12 @@ namespace FantasyIsland
         {
             Console.CursorVisible = false;
             Console.Clear();
-            //this.Intro(); //UNCOMMENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            this.Intro(); //UNCOMMENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             int totalRounds = rand.Next(MinNumberOfFlyingDemons, MaxNumberOfFlyingDemons + 1);
 
             for (int round = 0; round < totalRounds; round++)
             {
+                //Console.WriteLine(Damage(false)); //for testing
                 this.Battle();
             }
 
@@ -76,32 +66,36 @@ namespace FantasyIsland
         {
             Console.Clear();
             this.ChangeConsoleColor(ConsoleColor.Yellow);
+            Console.WriteLine(this.Hero.PlayerStats.Agility);
+            Console.WriteLine(this.Hero.TotalStats.Agility);
+
             Console.WriteLine("You successfully passed the Demon Vault!");
+            Console.WriteLine("Fortunately you found a health shrine and you\ncan refill you health for the next battle!");
+            this.Hero.ResetHealth();
             Console.WriteLine("It looks like a miracle, but you take the wings\nfrom demon and now you can fly!");
             Console.WriteLine("As a result your Agility(speed) increases twice!");
             Hero.IncreaseAgility(this.Hero.PlayerStats.Agility); //this will double the hero agility
+            Console.WriteLine(this.Hero.PlayerStats.Agility);
+            Console.WriteLine(this.Hero.TotalStats.Agility);
             this.ChangeConsoleColor(ConsoleColor.White);
+            Reaction.Wait();
+
         }
 
         protected override void Battle()
-        //TO DO
-        //Use the this.enemyDemon.Magic - HighDrop
-        //Use method that returns random damage with parameters Damage(playerDamage, accuracy) to be universal for hero and for demon
         {
-            Console.Clear();
             int randomNumber = this.rand.Next(101);
-            int damageDemon = this.enemyDemon.TotalStats.AttackPower; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! +- % Accuracy
-            int damageHero = this.Hero.PlayerStats.AttackPower * this.Hero.PlayerStats.Accuracy / 100; //!!!!! +- % Accuracy
             this.enemyDemon.ResetHealth();
-            //How to check what kind of weapon the hero has??? !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            //To check what kind of weapon the hero has??? !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             bool isLongRangeWeapon = false;
 
             if (randomNumber % 6 == 0) //demon has 16% chance to surprise you with HighDrop
             {
                 ChangeConsoleColor(ConsoleColor.Red);
                 Console.WriteLine("SUDDENLY! A demon surprises you with hit from the back!");
-                Console.WriteLine("Now you are caught and dropped from high altitude! Damage: {0}", damageDemon/*implement demon magic HighDrop*/);
-                this.Hero.LooseHealth(damageDemon);
+                damage = (int)(Damage(false) * 1.5); /*implement demon magic HighDrop - Demon deals 50% more damage*/
+                Console.WriteLine("Now you are caught and dropped from high altitude! Damage: {0}", damage);
+                this.Hero.LooseHealth(damage);
             }
             else
             {
@@ -124,8 +118,8 @@ namespace FantasyIsland
                 }
 
                 //TO DO - At the end of each turn to give the player a choice what to do
-                ChangeConsoleColor(ConsoleColor.White);
-                Console.WriteLine("Now make your choise:");
+                ChangeConsoleColor(ConsoleColor.Cyan);
+                Console.WriteLine("Now make your choice:");
                 Console.WriteLine("To ATTACK the demon press 'A'.");
                 Console.WriteLine("To try to ESCAPE and HIDE from this demon press 'E'.");
 
@@ -138,17 +132,29 @@ namespace FantasyIsland
                 else
                 {
                     //There must be any chance to escape from the demon, but he can also catch you and hurt you
-                    Console.WriteLine("EEEEEEEEEEE");
-                    //TO DO
+                    if (rand.Next(71) + this.Hero.TotalStats.Agility >= 100)
+                    {
+                        this.ChangeConsoleColor(ConsoleColor.Green);
+                        Console.WriteLine("You are so fast and the demon cannot see you anymore.\nBut be careful there are many demons around!");
+                        Reaction.Wait();
+                        break;
+                    }
+                    else
+                    {
+                        ChangeConsoleColor(ConsoleColor.Yellow);
+                        Console.WriteLine("You did not hide good enough and the demon saw you.");
+                        DemonAttack();
+                        continue;
+                    }
                 }
 
                 if (isLongRangeWeapon) //the hero can shoot at the demon
                 {
-                    BattleWithLongRangeWeapon(damageHero);
+                    BattleWithLongRangeWeapon();
                 }
                 else //hero has hand weapon
                 {
-                    BattleWithHandWeapon(damageHero);
+                    BattleWithHandWeapon();
                 }
 
                 if (this.enemyDemon.PlayerStats.Stamina <= 0) //demon is dead and cannot hit you
@@ -156,27 +162,34 @@ namespace FantasyIsland
                     this.ChangeConsoleColor(ConsoleColor.Green);
                     Console.WriteLine("You successfully killed the flying demon!");
                     this.ChangeConsoleColor(ConsoleColor.White);
-                    Console.WriteLine("But be carefull there are many of them here.");
+                    Console.WriteLine("But be carefull there are many of them here.\nPress any key when you are ready for the next one.");
+                    Reaction.Wait();
                     break;
                 }
-                ChangeConsoleColor(ConsoleColor.Red);
-                Console.WriteLine("Demon successfully grabbed you and threw you into a stone. Damage: {0}", damageDemon);
-                this.Hero.LooseHealth(damageDemon);
-
-                
+                DemonAttack();
             }
-            
+
+            Console.Clear();
         }
 
-        private void BattleWithHandWeapon(int damageHero)
+        private void DemonAttack()
+        {
+            ChangeConsoleColor(ConsoleColor.Red);
+            damage = this.Damage(false);
+            Console.WriteLine("Demon successfully grabbed you and threw you into a stone. Damage: {0}", damage);
+            this.Hero.LooseHealth(damage);
+        }
+
+        private void BattleWithHandWeapon()
         {
             this.ChangeConsoleColor(ConsoleColor.White);
-            Console.WriteLine("The demon is flying against you, but you can\nonly prepare to hit him when he is close enough!");
-            if (rand.Next(11) <= 8) //80% chance to hit demon
+            Console.WriteLine("The demon is flying against you, but you can\nonly prepare to hit him until he is close enough!");
+            if (rand.Next(101) < 80) //80% chance to hit demon, if depends on the Agility - makes game too unfair 
             {
                 ChangeConsoleColor(ConsoleColor.Green);
-                Console.WriteLine("You were fast enough to hit the demon first. Damage: {0}", damageHero);
-                this.enemyDemon.LooseHealth(damageHero);
+                damage = this.Damage(true);
+                Console.WriteLine("You were fast enough to hit the demon first. Damage: {0}", damage);
+                this.enemyDemon.LooseHealth(damage);
             }
             else
             {
@@ -184,26 +197,60 @@ namespace FantasyIsland
             }
         }
 
-        private void BattleWithLongRangeWeapon(int damageHero)
+        private void BattleWithLongRangeWeapon()
         {
             this.ChangeConsoleColor(ConsoleColor.White);
             Console.WriteLine("You saw the demon and immediately prepare to shoot.");
             this.ChangeConsoleColor(ConsoleColor.Green);
 
-            if (this.Hero.PlayerStats.Agility >= 90 && rand.Next(11) >= 5) // 50% chance to shoot twice
+            if (this.Hero.TotalStats.Agility >= 70 && rand.Next(11) % 2 == 0) // 50% chance to shoot twice if Hero is fast enough
             {
                 Console.WriteLine("You are fast enough to shoot at the demon\ntwo times while it is approaching!");
-                this.enemyDemon.LooseHealth(damageHero);
-                Console.WriteLine("Damage dealt to demon is {0}", damageHero);
+                damage = this.Damage(true);
+                this.enemyDemon.LooseHealth(damage);
+                Console.WriteLine("Damage dealt to demon is {0}", damage);
             }
-            this.enemyDemon.LooseHealth(damageHero);
-            Console.WriteLine("Damage dealt to demon is {0}", damageHero);
+            damage = this.Damage(true);
+            this.enemyDemon.LooseHealth(damage);
+            Console.WriteLine("Damage dealt to demon is {0}", damage);
         }
 
-        private int Damage(int attackPower, int accuracy, int opponentDefence)
+        private int Damage(bool isHero)
         {
-            int damage = (int)(attackPower * ((double)accuracy / 100)) - opponentDefence;
-            return damage; 
+            int attackPower;
+            int accuracy;
+            double agility;
+            int opponentDefence;
+
+            if (isHero)
+            {
+                attackPower = this.Hero.TotalStats.AttackPower;
+                accuracy = this.Hero.TotalStats.Accuracy;
+                agility = (double)this.Hero.TotalStats.Agility / 100;
+                opponentDefence = this.enemyDemon.TotalStats.Defence;
+            }
+            else
+            {
+                attackPower = this.enemyDemon.TotalStats.AttackPower;
+
+                if (this.Difficulty == FantasyIsland.Difficulty.Medium)
+                {
+                    attackPower += attackPower / 4; //adds 25% more damage
+                }
+                else if (this.Difficulty == FantasyIsland.Difficulty.Hard)
+                {
+                    attackPower += attackPower / 2; //adds 50% more damage
+                }
+
+                accuracy = this.enemyDemon.TotalStats.Accuracy * 4;
+                agility = 0.9;
+                opponentDefence = this.Hero.PlayerStats.Defence / 10; //when thrown player defence does not help him much
+            }
+
+            int damageToTake = (int)(attackPower * ((double)accuracy * agility / 100)) - opponentDefence;
+            damageToTake = rand.Next((damageToTake - damageToTake / 4), (damageToTake + damageToTake / 4) + 1); // +-25%
+
+            return damageToTake;
         }
 
         private void ChangeConsoleColor(ConsoleColor color)
