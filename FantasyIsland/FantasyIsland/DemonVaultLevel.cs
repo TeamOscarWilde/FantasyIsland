@@ -1,7 +1,7 @@
 ﻿/*
  * This level represents Demons' Vault and the Hero needs to survive. 
  * if hero has a shooting weapon he can easier survive and take less damage by the demons.
- * Difficulty is used in calculating demon's damage.
+ * Difficulty is used when calculating demon's damage.
 */
 namespace FantasyIsland
 {
@@ -58,14 +58,15 @@ namespace FantasyIsland
         protected override void LevelFinished()
         {
             Console.Clear();
+
             this.ChangeConsoleColor(ConsoleColor.Yellow);
             using (StreamReader sr = new StreamReader(@"..\..\Text\DemonVaultFinished.txt"))
             {
                 sr.ReadAndType();
             }
-            Hero.IncreaseAgility(this.Hero.PlayerStats.Agility); //this will double the hero agility
-            Console.WriteLine(this.Hero.PlayerStats.Agility); // To FIX AGILITY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            Console.WriteLine(this.Hero.TotalStats.Agility);
+
+            this.Hero.ResetHealth();
+            this.Hero.IncreaseAgility(this.Hero.PlayerStats.Agility); //this will double the hero agility
             this.ChangeConsoleColor(ConsoleColor.White);
             Reaction.Wait();
 
@@ -82,7 +83,7 @@ namespace FantasyIsland
             {
                 ChangeConsoleColor(ConsoleColor.Red);
                 Console.WriteLine("SUDDENLY! A demon surprises you with hit from the back!");
-                damage = (int)(Damage(false) * 1.5); /*implement demon magic HighDrop - Demon deals 50% more damage*/
+                damage = (int)(this.Damage(false) * 1.5); /*implement demon magic HighDrop - Demon deals 50% more damage*/
                 Console.WriteLine("Now you are caught and dropped from high altitude! Damage: {0}", damage);
                 this.Hero.LooseHealth(damage);
             }
@@ -132,18 +133,18 @@ namespace FantasyIsland
                     {
                         ChangeConsoleColor(ConsoleColor.Yellow);
                         Console.WriteLine("You did not hide good enough and the demon saw you.");
-                        DemonAttack();
+                        this.DemonAttack();
                         continue;
                     }
                 }
 
                 if (isLongRangeWeapon) //the hero can shoot at the demon
                 {
-                    BattleWithLongRangeWeapon();
+                    this.BattleWithLongRangeWeapon();
                 }
                 else //hero has hand weapon
                 {
-                    BattleWithHandWeapon();
+                    this.BattleWithHandWeapon();
                 }
 
                 if (this.enemyDemon.PlayerStats.Stamina <= 0) //demon is dead and cannot hit you
@@ -155,7 +156,7 @@ namespace FantasyIsland
                     Reaction.Wait();
                     break;
                 }
-                DemonAttack();
+                this.DemonAttack();
             }
                 
             Console.Clear();

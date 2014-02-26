@@ -1,4 +1,5 @@
 You successfully passed the Demon Vault!
+You found a healt shrine and you can regenerate your health.
 It looks like a miracle, but you take the wings
 from the demon and now you can fly!
 As a result your Agility(speed) increases twice!

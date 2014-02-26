@@ -86,6 +86,7 @@ namespace FantasyIsland
         public void IncreaseAgility(int amount)
         {
             this.playerStats.IncreaseAgility(amount);
+            this.totalStats.IncreaseAgility(amount);
         }
 
         public void DecreaseAgility(int amount)
