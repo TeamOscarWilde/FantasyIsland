@@ -61,7 +61,7 @@ namespace FantasyIsland.Characters
         {
             get
             {
-                return new Weapon(this.weapon.WeaponStats.AttackPower, this.weapon.WeaponStats.Accuracy, this.weapon.WeaponStats.Defence, this.Weapon.Weight, this.weapon.Strength, this.weapon.WeaponType);
+                return new Weapon(this.weapon.WeaponStats.AttackPower, this.weapon.WeaponStats.Accuracy, this.weapon.WeaponStats.Defence, this.weapon.Weight, this.weapon.Strength, this.weapon.WeaponType);
             }
             set
             {

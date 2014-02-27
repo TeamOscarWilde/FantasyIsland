@@ -10,7 +10,7 @@ namespace FantasyIsland
 {
     public static class Extensions
     {
-        private const int MiliSecsBetweenChars = 100;
+        private const int MiliSecsBetweenChars = 20;
         public static void TypeSlow(this string str)
         {
             foreach (char ch in str)
